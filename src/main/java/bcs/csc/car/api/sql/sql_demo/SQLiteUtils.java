@@ -7,6 +7,7 @@ import bcs.csc.car.api.sql.sql.model.body.BodyStyle;
 import bcs.csc.car.api.sql.sql.model.drive.DriveType;
 import bcs.csc.car.api.sql.sql.model.engine.EngineModel;
 import bcs.csc.car.api.sql.sql.model.engine.EngineModelPattern;
+import bcs.csc.car.api.sql.sql.model.identification.Element;
 import bcs.csc.car.api.sql.sql.model.make_model.Make;
 import bcs.csc.car.api.sql.sql.model.make_model.Make_Model;
 import bcs.csc.car.api.sql.sql.model.make_model.Model;
@@ -165,6 +166,52 @@ public class SQLiteUtils {
             }
         }
         return engineModelPatternList;
+    }
+
+    public static LinkedList<Element> readElementData() {
+        Connection connection = SQLiteConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        LinkedList<Element> elementList = new LinkedList<>();
+        try {
+            String sql = "SELECT * FROM Element";
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            System.out.println("ELEMENT CONNECTION");
+            while (resultSet.next()) {
+                long id = Long.parseLong(resultSet.getString("Id"));
+                String name = resultSet.getString("Name");
+                String code = resultSet.getString("Code");
+                String lookupTable = resultSet.getString("LookupTable");
+                String description = resultSet.getString("Description");
+                if (!(description == null)) {
+                    description = description.replaceAll("<p>", "");
+                    description = description.replaceAll("</p>", "");
+                }
+                boolean isPrivate = false;
+                String isPrivateString = resultSet.getString("IsPrivate");
+                if (!(isPrivateString == null)) {
+                    if (isPrivateString.equals("1")) {
+                        isPrivate = true;
+                    }
+                }
+                String groupName = resultSet.getString("GroupName");
+                String dataType = resultSet.getString("DataType");
+                String decode = resultSet.getString("Decode");
+                elementList.add(new Element(id, name, code, lookupTable, description, isPrivate, groupName, dataType, decode));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+        return elementList;
     }
 
     public static LinkedList<Make_Model> readMake_ModelData() {

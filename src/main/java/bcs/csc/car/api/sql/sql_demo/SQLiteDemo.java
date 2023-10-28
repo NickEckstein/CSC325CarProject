@@ -5,6 +5,7 @@ import bcs.csc.car.api.sql.sql.model.body.BodyStyle;
 import bcs.csc.car.api.sql.sql.model.drive.DriveType;
 import bcs.csc.car.api.sql.sql.model.engine.EngineModel;
 import bcs.csc.car.api.sql.sql.model.engine.EngineModelPattern;
+import bcs.csc.car.api.sql.sql.model.identification.Element;
 import bcs.csc.car.api.sql.sql.model.make_model.Make;
 import bcs.csc.car.api.sql.sql.model.make_model.Make_Model;
 import bcs.csc.car.api.sql.sql.model.make_model.Model;
@@ -38,6 +39,11 @@ public class SQLiteDemo {
         LinkedList<EngineModelPattern> engineModelPatternList = SQLiteUtils.readEngineModelPatternData();
         for (int i = 0; i < engineModelPatternList.size(); i++) {
             System.out.println(engineModelPatternList.get(i));
+        }
+
+        LinkedList<Element> elementList = SQLiteUtils.readElementData();
+        for (int i = 0; i < elementList.size(); i++) {
+            System.out.println(elementList.get(i));
         }
 
         LinkedList<Make_Model> make_modelList = SQLiteUtils.readMake_ModelData();
