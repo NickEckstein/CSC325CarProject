@@ -1,5 +1,6 @@
 package bcs.csc.car.api.sql.sql_demo;
 
+import bcs.csc.car.api.sql.model.fueltype.FuelType;
 import java.util.LinkedList;
 
 import bcs.csc.car.api.sql.sql.model.battery.BatteryType;
@@ -212,6 +213,35 @@ public class SQLiteUtils {
             }
         }
         return elementList;
+    }
+
+    public static LinkedList<FuelType> readFuelTypeData() {
+        Connection connection = SQLiteConnection.connect();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        LinkedList<FuelType> fuelTypeList = new LinkedList<>();
+        try {
+            String sql = "SELECT * FROM FuelType";
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            System.out.println("FUEL TYPE CONNECTION");
+            while (resultSet.next()) {
+                long id = Long.parseLong(resultSet.getString("Id"));
+                String name = resultSet.getString("Name");
+                fuelTypeList.add(new FuelType(id, name));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+        return fuelTypeList;
     }
 
     public static LinkedList<Make_Model> readMake_ModelData() {

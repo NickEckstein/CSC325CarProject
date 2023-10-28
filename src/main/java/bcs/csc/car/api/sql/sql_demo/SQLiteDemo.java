@@ -1,5 +1,6 @@
 package bcs.csc.car.api.sql.sql_demo;
 
+import bcs.csc.car.api.sql.model.fueltype.FuelType;
 import bcs.csc.car.api.sql.sql.model.battery.BatteryType;
 import bcs.csc.car.api.sql.sql.model.body.BodyStyle;
 import bcs.csc.car.api.sql.sql.model.drive.DriveType;
@@ -44,6 +45,11 @@ public class SQLiteDemo {
         LinkedList<Element> elementList = SQLiteUtils.readElementData();
         for (int i = 0; i < elementList.size(); i++) {
             System.out.println(elementList.get(i));
+        }
+
+        LinkedList<FuelType> fuelTypeList = SQLiteUtils.readFuelTypeData();
+        for (int i = 0; i < fuelTypeList.size(); i++) {
+            System.out.println(fuelTypeList.get(i));
         }
 
         LinkedList<Make_Model> make_modelList = SQLiteUtils.readMake_ModelData();
