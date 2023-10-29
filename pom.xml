@@ -13,12 +13,12 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>13</version>
+            <version>20.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>13</version>
+            <version>20.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.xerial</groupId>
@@ -41,7 +41,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
                 <configuration>
-                    <mainClass>bcs.csc.car.api.sql.App</mainClass>
+                    <mainClass>bcs.csc.car.api.App</mainClass>
                 </configuration>
                 <executions>
                     <execution>

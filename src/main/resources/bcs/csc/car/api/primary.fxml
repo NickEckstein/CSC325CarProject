@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane prefHeight="192.0" prefWidth="256.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bcs.csc.car.api.PrimaryController">
+   <center>
+      <Button fx:id="generateRandomVehicleButton" mnemonicParsing="false" onAction="#generateRandomLegalVehicle" text="Generate Random Vehicle" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

@@ -1,6 +1,8 @@
 package bcs.csc.car.api.sql.model.fueltype;
 
-public class FuelType {
+import java.io.Serializable;
+
+public class FuelType implements Serializable {
 
     private long id;
     private String name;
