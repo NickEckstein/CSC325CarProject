@@ -91,6 +91,8 @@ public class App extends Application {
 
             LinkedList<LegalMake_Model> legalMake_ModelList = DataParser.readThroughMake_ModelList(make_modelList, makeList, modelList);
             DataParser.saveFile(legalMake_ModelList, "Legal Make_Model List");
+            
+            App.legalMake_ModelList = legalMake_ModelList;
         } else {
             LinkedList<LegalMake_Model> legalMake_ModelList = DataParser.readFile("Legal Make_Model List.dat");
             App.legalMake_ModelList = legalMake_ModelList;
