@@ -8,7 +8,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Region;
 
-public class PrimaryController {
+public class SampleController {
 
     @FXML
     private Button generateRandomVehicleButton;
