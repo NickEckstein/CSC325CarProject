@@ -9,10 +9,14 @@ import bcs.csc.car.api.sql.model.make_model.Make;
 import bcs.csc.car.api.sql.model.make_model.Model;
 import bcs.csc.car.api.sql.model.transmission.Transmission;
 import bcs.csc.car.api.sql.model.vehicle.VehicleType;
+import bcs.csc.car.api.utils.VehicleIDCounter;
 import java.io.Serializable;
+import java.util.LinkedList;
+import javafx.scene.image.Image;
 
 public class Vehicle implements Serializable {
 
+    private final long vehicleID;
     private BatteryType batteryType;
     private BodyStyle bodyStyle;
     private DriveType driveType;
@@ -24,8 +28,13 @@ public class Vehicle implements Serializable {
     private VehicleType vehicleType;
     private long year;
     private long miles;
+    private String color;
+    private String conditionDescription;
+    private long numberOfAccidents;
+    private LinkedList<Image> imageList;
 
-    public Vehicle(BatteryType batteryType, BodyStyle bodyStyle, DriveType driveType, EngineModel engineModel, FuelType fuelType, Make make, Model model, Transmission transmission, VehicleType vehicleType, long year, long miles) {
+    public Vehicle(BatteryType batteryType, BodyStyle bodyStyle, DriveType driveType, EngineModel engineModel, FuelType fuelType, Make make, Model model, Transmission transmission, VehicleType vehicleType, long year, long miles, String color, String conditionDescription, long numberOfAccidents) {
+        this.vehicleID = VehicleIDCounter.addNewVehicleID();
         this.batteryType = batteryType;
         this.bodyStyle = bodyStyle;
         this.driveType = driveType;
@@ -37,6 +46,14 @@ public class Vehicle implements Serializable {
         this.vehicleType = vehicleType;
         this.year = year;
         this.miles = miles;
+        this.color = color;
+        this.conditionDescription = conditionDescription;
+        this.numberOfAccidents = numberOfAccidents;
+        this.imageList = new LinkedList<>();
+    }
+
+    public long getVehicleID() {
+        return vehicleID;
     }
 
     public BatteryType getBatteryType() {
@@ -83,6 +100,22 @@ public class Vehicle implements Serializable {
         return miles;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public String getConditionDescription() {
+        return conditionDescription;
+    }
+
+    public long getNumberOfAccidents() {
+        return numberOfAccidents;
+    }
+
+    public LinkedList<Image> getImageList() {
+        return imageList;
+    }
+
     public void setBatteryType(BatteryType batteryType) {
         this.batteryType = batteryType;
     }
@@ -127,9 +160,25 @@ public class Vehicle implements Serializable {
         this.miles = miles;
     }
 
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setConditionDescription(String conditionDescription) {
+        this.conditionDescription = conditionDescription;
+    }
+
+    public void setNumberOfAccidents(long numberOfAccidents) {
+        this.numberOfAccidents = numberOfAccidents;
+    }
+
+    public void setImages(LinkedList<Image> imageList) {
+        this.imageList = imageList;
+    }
+
     @Override
     public String toString() {
-        return "Vehicle [" + "batteryType=" + batteryType + ", bodyStyle=" + bodyStyle + ", driveType=" + driveType + ", engineModel=" + engineModel + ", fuelType=" + fuelType + ", make=" + make + ", model=" + model + ", transmission=" + transmission + ", vehicleType=" + vehicleType + ", year=" + year + ", miles=" + miles + "]";
+        return "Vehicle [" + "batteryType=" + batteryType + ", bodyStyle=" + bodyStyle + ", driveType=" + driveType + ", engineModel=" + engineModel + ", fuelType=" + fuelType + ", make=" + make + ", model=" + model + ", transmission=" + transmission + ", vehicleType=" + vehicleType + ", year=" + year + ", miles=" + miles + ", color=" + color + ", conditionDescription=\n" + conditionDescription + "\n" + ", numberOfAccidents= " + numberOfAccidents + "]";
     }
 
 }
