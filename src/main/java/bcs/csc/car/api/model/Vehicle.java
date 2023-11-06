@@ -5,180 +5,207 @@ import bcs.csc.car.api.sql.model.battery.BatteryType;
 import bcs.csc.car.api.sql.model.body.BodyStyle;
 import bcs.csc.car.api.sql.model.drive.DriveType;
 import bcs.csc.car.api.sql.model.engine.EngineModel;
-import bcs.csc.car.api.sql.model.make_model.Make;
-import bcs.csc.car.api.sql.model.make_model.Model;
 import bcs.csc.car.api.sql.model.transmission.Transmission;
 import bcs.csc.car.api.sql.model.vehicle.VehicleType;
 import bcs.csc.car.api.utils.VehicleIDCounter;
 import java.io.Serializable;
 import java.util.LinkedList;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
 
 public class Vehicle implements Serializable {
 
-    private final long vehicleID;
-    private BatteryType batteryType;
-    private BodyStyle bodyStyle;
-    private DriveType driveType;
-    private EngineModel engineModel;
-    private FuelType fuelType;
-    private Make make;
-    private Model model;
-    private Transmission transmission;
-    private VehicleType vehicleType;
-    private long year;
-    private long miles;
-    private String color;
-    private String conditionDescription;
-    private long numberOfAccidents;
+    private final SimpleLongProperty vehicleID;
+    private SimpleStringProperty batteryType;
+    private SimpleStringProperty bodyStyle;
+    private SimpleStringProperty driveType;
+    private SimpleStringProperty engineModel;
+    private SimpleStringProperty fuelType;
+    private SimpleStringProperty make;
+    private SimpleStringProperty model;
+    private SimpleStringProperty transmission;
+    private SimpleStringProperty vehicleType;
+    private SimpleLongProperty year;
+    private SimpleLongProperty miles;
+    private SimpleStringProperty color;
+    private SimpleStringProperty conditionDescription;
+    private SimpleLongProperty numberOfAccidents;
     private LinkedList<Image> imageList;
+    private SimpleDoubleProperty price;
 
-    public Vehicle(BatteryType batteryType, BodyStyle bodyStyle, DriveType driveType, EngineModel engineModel, FuelType fuelType, Make make, Model model, Transmission transmission, VehicleType vehicleType, long year, long miles, String color, String conditionDescription, long numberOfAccidents) {
-        this.vehicleID = VehicleIDCounter.addNewVehicleID();
-        this.batteryType = batteryType;
-        this.bodyStyle = bodyStyle;
-        this.driveType = driveType;
-        this.engineModel = engineModel;
-        this.fuelType = fuelType;
-        this.make = make;
-        this.model = model;
-        this.transmission = transmission;
-        this.vehicleType = vehicleType;
-        this.year = year;
-        this.miles = miles;
-        this.color = color;
-        this.conditionDescription = conditionDescription;
-        this.numberOfAccidents = numberOfAccidents;
+    public Vehicle(String batteryType, String bodyStyle, String driveType, String engineModel, String fuelType, String make, String model, String transmission, String vehicleType, long year, long miles, String color, String conditionDescription, long numberOfAccidents, double price) {
+        this.vehicleID = new SimpleLongProperty(VehicleIDCounter.addNewVehicleID());
+        this.batteryType = new SimpleStringProperty(batteryType);
+        this.bodyStyle = new SimpleStringProperty(bodyStyle);
+        this.driveType = new SimpleStringProperty(driveType);
+        this.engineModel = new SimpleStringProperty(engineModel);
+        this.fuelType = new SimpleStringProperty(fuelType);
+        this.make = new SimpleStringProperty(make);
+        this.model = new SimpleStringProperty(model);
+        this.transmission = new SimpleStringProperty(transmission);
+        this.vehicleType = new SimpleStringProperty(vehicleType);
+        this.year = new SimpleLongProperty(year);
+        this.miles = new SimpleLongProperty(miles);
+        this.color = new SimpleStringProperty(color);
+        this.conditionDescription = new SimpleStringProperty(conditionDescription);
+        this.numberOfAccidents = new SimpleLongProperty(numberOfAccidents);
         this.imageList = new LinkedList<>();
+        this.price = new SimpleDoubleProperty(price);
     }
 
     public long getVehicleID() {
-        return vehicleID;
+        return vehicleID.getValue();
     }
 
-    public BatteryType getBatteryType() {
-        return batteryType;
+    public String getBatteryType() {
+        return batteryType.getValue();
     }
 
-    public BodyStyle getBodyStyle() {
-        return bodyStyle;
+    public String getBodyStyle() {
+        return bodyStyle.getValue();
     }
 
-    public DriveType getDriveType() {
-        return driveType;
+    public String getDriveType() {
+        return driveType.getValue();
     }
 
-    public EngineModel getEngineModel() {
-        return engineModel;
+    public String getEngineModel() {
+        return engineModel.getValue();
     }
 
-    public FuelType getFuelType() {
-        return fuelType;
+    public String getFuelType() {
+        return fuelType.getValue();
     }
 
-    public Make getMake() {
-        return make;
+    public String getMake() {
+        return make.getValue();
     }
 
-    public Model getModel() {
-        return model;
+    public String getModel() {
+        return model.getValue();
     }
 
-    public Transmission getTransmission() {
-        return transmission;
+    public String getTransmission() {
+        return transmission.getValue();
     }
 
-    public VehicleType getVehicleType() {
-        return vehicleType;
+    public String getVehicleType() {
+        return vehicleType.getValue();
     }
 
     public long getYear() {
-        return year;
+        return year.getValue();
     }
 
     public long getMiles() {
-        return miles;
+        return miles.getValue();
     }
 
     public String getColor() {
-        return color;
+        return color.getValue();
     }
 
     public String getConditionDescription() {
-        return conditionDescription;
+        return conditionDescription.getValue();
     }
 
     public long getNumberOfAccidents() {
-        return numberOfAccidents;
+        return numberOfAccidents.getValue();
     }
 
     public LinkedList<Image> getImageList() {
         return imageList;
     }
 
-    public void setBatteryType(BatteryType batteryType) {
-        this.batteryType = batteryType;
+    public double getPrice() {
+        return price.getValue();
     }
 
-    public void setBodyStyle(BodyStyle bodyStyle) {
-        this.bodyStyle = bodyStyle;
+    public void setBatteryType(String batteryType) {
+        this.batteryType = new SimpleStringProperty(batteryType);
     }
 
-    public void setDriveType(DriveType driveType) {
-        this.driveType = driveType;
+    public void setBodyStyle(String bodyStyle) {
+        this.bodyStyle = new SimpleStringProperty(bodyStyle);
     }
 
-    public void setEngineModel(EngineModel engineModel) {
-        this.engineModel = engineModel;
+    public void setDriveType(String driveType) {
+        this.driveType = new SimpleStringProperty(driveType);
     }
 
-    public void setFuelType(FuelType fuelType) {
-        this.fuelType = fuelType;
+    public void setEngineModel(String engineModel) {
+        this.engineModel = new SimpleStringProperty(engineModel);
     }
 
-    public void setMake(Make make) {
-        this.make = make;
+    public void setFuelType(String fuelType) {
+        this.fuelType = new SimpleStringProperty(fuelType);
     }
 
-    public void setModel(Model model) {
-        this.model = model;
+    public void setMake(String make) {
+        this.make = new SimpleStringProperty(make);
     }
 
-    public void setTransmission(Transmission transmission) {
-        this.transmission = transmission;
+    public void setModel(String model) {
+        this.model = new SimpleStringProperty(model);
     }
 
-    public void setVehicleType(VehicleType vehicleType) {
-        this.vehicleType = vehicleType;
+    public void setTransmission(String transmission) {
+        this.transmission = new SimpleStringProperty(transmission);
+    }
+
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = new SimpleStringProperty(vehicleType);
     }
 
     public void setYear(long year) {
-        this.year = year;
+        this.year = new SimpleLongProperty(year);
     }
 
     public void setMiles(long miles) {
-        this.miles = miles;
+        this.miles = new SimpleLongProperty(miles);
     }
 
     public void setColor(String color) {
-        this.color = color;
+        this.color = new SimpleStringProperty(color);
     }
 
     public void setConditionDescription(String conditionDescription) {
-        this.conditionDescription = conditionDescription;
+        this.conditionDescription = new SimpleStringProperty(conditionDescription);
     }
 
     public void setNumberOfAccidents(long numberOfAccidents) {
-        this.numberOfAccidents = numberOfAccidents;
+        this.numberOfAccidents = new SimpleLongProperty(numberOfAccidents);
     }
 
     public void setImages(LinkedList<Image> imageList) {
         this.imageList = imageList;
     }
 
+    public void setPrice(double price) {
+        this.price = new SimpleDoubleProperty(price);
+    }
+
     @Override
     public String toString() {
-        return "Vehicle [" + "batteryType=" + batteryType + ", bodyStyle=" + bodyStyle + ", driveType=" + driveType + ", engineModel=" + engineModel + ", fuelType=" + fuelType + ", make=" + make + ", model=" + model + ", transmission=" + transmission + ", vehicleType=" + vehicleType + ", year=" + year + ", miles=" + miles + ", color=" + color + ", conditionDescription=\n" + conditionDescription + "\n" + ", numberOfAccidents= " + numberOfAccidents + "]";
+        return "Vehicle [Vehicle ID: " + vehicleID.getValue() + " ["
+                + "batteryType=" + batteryType
+                + ", bodyStyle=" + bodyStyle
+                + ", driveType=" + driveType
+                + ", engineModel=" + engineModel
+                + ", fuelType=" + fuelType
+                + ", make=" + make
+                + ", model=" + model
+                + ", transmission=" + transmission
+                + ", vehicleType=" + vehicleType
+                + ", year=" + year
+                + ", miles=" + miles
+                + ", color=" + color
+                + ", conditionDescription=\n" + conditionDescription + "\n"
+                + ", numberOfAccidents= " + numberOfAccidents
+                + ", price=" + price
+                + "]]";
     }
 
 }
