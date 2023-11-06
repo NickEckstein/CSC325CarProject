@@ -130,6 +130,7 @@ public class VehicleTableController {
                 Parent root1 = (Parent) fxmlLoader.load();
                 imageStage = new Stage();
                 imageStage.setScene(new Scene(root1));
+                imageStage.setTitle("Image Viewer");
                 imageStage.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -160,6 +161,7 @@ public class VehicleTableController {
         LegalMake_Model randomLegalMake_Model = legalMake_ModelList.get((int) (Math.random() * legalMake_ModelList.size() - 1));
         Vehicle vehicle = new Vehicle(batteryTypeList.get(randomIndexFromList(batteryTypeList)).getBatteryName(), bodyStyleList.get(randomIndexFromList(bodyStyleList)).getBodyStyleName(), driveTypeList.get(randomIndexFromList(driveTypeList)).getDriveTypeName(), engineModelList.get(randomIndexFromList(engineModelList)).getEngineModelName(), fuelTypeList.get(randomIndexFromList(fuelTypeList)).getName(), randomLegalMake_Model.getMakeName(), randomLegalMake_Model.getModelName(), transmissionList.get(randomIndexFromList(transmissionList)).getTransmissionName(), vehicleTypeList.get(randomIndexFromList(vehicleTypeList)).getVehicleTypeName(), 0, 0, "Blank", "None", 0, 25);
         vehicleList.add(vehicle);
+        vehicleTableView.getSelectionModel().clearSelection();
     }
 
     private <T> int randomIndexFromList(LinkedList<T> linkedList) {
@@ -181,6 +183,7 @@ public class VehicleTableController {
         try {
             selectedVehicleID = vehicleTableView.getSelectionModel().getSelectedIndex();
             vehicleTableView.getItems().remove(selectedVehicleID);
+            vehicleTableView.getSelectionModel().clearSelection();
         } catch (Exception e) {
 //            System.out.println("Failure on removing selection...");
         }
