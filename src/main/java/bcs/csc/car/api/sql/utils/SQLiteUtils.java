@@ -19,6 +19,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * 
+ * @author Brian Niski
+ */
 public class SQLiteUtils {
 
     public static LinkedList<BatteryType> readBatteryTypeData() {

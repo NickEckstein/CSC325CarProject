@@ -2,6 +2,10 @@ package bcs.csc.car.api.sql.model.body;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author Brian Niski
+ */
 public class BodyStyle implements Serializable {
 
 	private long bodyStyleID;

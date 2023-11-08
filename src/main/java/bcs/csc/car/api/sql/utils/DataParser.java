@@ -12,6 +12,10 @@ import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
+/**
+ * 
+ * @author Brian Niski
+ */
 public class DataParser {
 
     public static LinkedList<LegalMake_Model> readThroughMake_ModelList(LinkedList<Make_Model> make_modelList, LinkedList<Make> makeList, LinkedList<Model> modelList) {

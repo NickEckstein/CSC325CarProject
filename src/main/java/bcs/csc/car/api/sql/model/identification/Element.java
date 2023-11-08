@@ -2,6 +2,10 @@ package bcs.csc.car.api.sql.model.identification;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author Brian Niski
+ */
 public class Element implements Serializable {
 
     private long id;

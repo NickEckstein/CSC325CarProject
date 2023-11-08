@@ -2,6 +2,10 @@ package bcs.csc.car.api.sql.model.make_model;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author Brian Niski
+ */
 public class Model implements Serializable {
 
 	private long modelID;

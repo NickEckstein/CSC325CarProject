@@ -2,6 +2,10 @@ package bcs.csc.car.api.model;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author Brian Niski
+ */
 public class LegalMake_Model implements Serializable {
 
     private String makeName;

@@ -1,12 +1,5 @@
 package bcs.csc.car.api.model;
 
-import bcs.csc.car.api.sql.model.fueltype.FuelType;
-import bcs.csc.car.api.sql.model.battery.BatteryType;
-import bcs.csc.car.api.sql.model.body.BodyStyle;
-import bcs.csc.car.api.sql.model.drive.DriveType;
-import bcs.csc.car.api.sql.model.engine.EngineModel;
-import bcs.csc.car.api.sql.model.transmission.Transmission;
-import bcs.csc.car.api.sql.model.vehicle.VehicleType;
 import bcs.csc.car.api.utils.VehicleIDCounter;
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -15,6 +8,10 @@ import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
 
+/**
+ * 
+ * @author Brian Niski
+ */
 public class Vehicle implements Serializable {
 
     private final SimpleLongProperty vehicleID;

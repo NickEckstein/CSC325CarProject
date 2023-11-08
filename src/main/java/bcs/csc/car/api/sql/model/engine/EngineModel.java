@@ -2,6 +2,10 @@ package bcs.csc.car.api.sql.model.engine;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author Brian Niski
+ */
 public class EngineModel implements Serializable {
 
 	private long engineModelID;

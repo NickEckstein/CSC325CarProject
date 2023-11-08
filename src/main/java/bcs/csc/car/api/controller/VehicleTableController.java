@@ -30,6 +30,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Brian Niski
+ */
 public class VehicleTableController {
 
     @FXML

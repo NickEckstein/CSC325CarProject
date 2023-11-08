@@ -1,14 +1,16 @@
 package bcs.csc.car.api.controller;
 
 import bcs.csc.car.api.model.Vehicle;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Brian Niski
+ */
 public class ImageViewController {
 
     @FXML

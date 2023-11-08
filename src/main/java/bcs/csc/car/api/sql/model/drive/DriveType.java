@@ -2,6 +2,10 @@ package bcs.csc.car.api.sql.model.drive;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author Brian Niski
+ */
 public class DriveType implements Serializable {
 
 	private long driveTypeID;
