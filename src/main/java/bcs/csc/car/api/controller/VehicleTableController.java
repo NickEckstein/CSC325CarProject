@@ -31,7 +31,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * 
+ *
  * @author Brian Niski
  */
 public class VehicleTableController {
@@ -130,7 +130,7 @@ public class VehicleTableController {
     private void showImagesView(ActionEvent event) {
         if (!(statusLabel.getText().equals(""))) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("imageView.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(App.VIEW_PATH + "imageView.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                 imageStage = new Stage();
                 imageStage.setScene(new Scene(root1));

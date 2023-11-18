@@ -27,12 +27,13 @@ import java.util.LinkedList;
 
 public class App extends Application {
 
+    public static final String VIEW_PATH = "view/";
     private static Scene scene;
     public static LinkedList<LegalMake_Model> legalMake_ModelList = new LinkedList<>();
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("vehicleTable"));
+        scene = new Scene(loadFXML(VIEW_PATH + "vehicleTable"));
         stage.setTitle("Mini Car Project");
         stage.setScene(scene);
         stage.show();
@@ -89,7 +90,7 @@ public class App extends Application {
 
             LinkedList<LegalMake_Model> legalMake_ModelList = DataParser.readThroughMake_ModelList(make_modelList, makeList, modelList);
             DataParser.saveFile(legalMake_ModelList, "Legal Make_Model List");
-            
+
             App.legalMake_ModelList = legalMake_ModelList;
         } else {
             LinkedList<LegalMake_Model> legalMake_ModelList = DataParser.readFile("Legal Make_Model List.dat");
