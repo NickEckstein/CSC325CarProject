@@ -39,17 +39,17 @@
          </font>
       </Text>
       <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <TextField promptText="enter username here" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField fx:id="usernameTextField" onAction="#verifyUsername" promptText="enter username here" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font name="System Italic" size="17.0" />
          </font>
       </TextField>
-      <TextField prefHeight="38.0" prefWidth="165.0" promptText="enter password here" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="passwordTextField" onAction="#verifyPassword" prefHeight="38.0" prefWidth="165.0" promptText="enter password here" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font name="System Italic" size="17.0" />
          </font>
       </TextField>
-      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Login" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onClickLoginPressed" prefHeight="25.0" prefWidth="105.0" text="Login" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       <ImageView fitHeight="115.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <image>
