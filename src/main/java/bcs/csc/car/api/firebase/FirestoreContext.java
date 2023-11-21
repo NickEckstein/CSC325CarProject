@@ -22,6 +22,7 @@ public class FirestoreContext {
                     .build();
             FirebaseApp.initializeApp(options);
             System.out.println("SUCCESSFULLY CONNECTED TO FIREBASE");
+            serviceAccount.close();
         } catch (FileNotFoundException ex) {
             System.out.println("UNABLE TO CONNECT TO FIREBASE \"key.json\" DOES NOT EXIST");
         } catch (IOException ex) {
