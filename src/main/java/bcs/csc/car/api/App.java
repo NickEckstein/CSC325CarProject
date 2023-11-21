@@ -33,7 +33,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML(VIEW_PATH + "vehicleTable"));
+        scene = new Scene(loadFXML(VIEW_PATH + "loginWindow"));
         stage.setTitle("Mini Car Project");
         stage.setScene(scene);
         stage.show();
@@ -49,53 +49,53 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        File f = new File("Legal Make_Model List.dat");
-        if (!f.exists()) {
-            System.out.println("Initializing project files...");
-            LinkedList<BatteryType> batteryTypeList = SQLiteUtils.readBatteryTypeData();
-            DataParser.saveFile(batteryTypeList, "Battery Type List");
-
-            LinkedList<BodyStyle> bodyStyleList = SQLiteUtils.readBodyStyleData();
-            DataParser.saveFile(bodyStyleList, "Body Style List");
-
-            LinkedList<DriveType> driveTypeList = SQLiteUtils.readDriveTypeData();
-            DataParser.saveFile(driveTypeList, "Drive Type List");
-
-            LinkedList<EngineModel> engineModelList = SQLiteUtils.readEngineModelData();
-            DataParser.saveFile(engineModelList, "Engine Model List");
-
-            LinkedList<EngineModelPattern> engineModelPatternList = SQLiteUtils.readEngineModelPatternData();
-            DataParser.saveFile(engineModelPatternList, "Engine Model Pattern List");
-
-            LinkedList<Element> elementList = SQLiteUtils.readElementData();
-            DataParser.saveFile(elementList, "Element List");
-
-            LinkedList<FuelType> fuelTypeList = SQLiteUtils.readFuelTypeData();
-            DataParser.saveFile(fuelTypeList, "Fuel Type List");
-
-            LinkedList<Make_Model> make_modelList = SQLiteUtils.readMake_ModelData();
-            DataParser.saveFile(make_modelList, "Make_Model List");
-
-            LinkedList<Make> makeList = SQLiteUtils.readMakeData();
-            DataParser.saveFile(makeList, "Make List");
-
-            LinkedList<Model> modelList = SQLiteUtils.readModelData();
-            DataParser.saveFile(modelList, "Model List");
-
-            LinkedList<Transmission> transmissionList = SQLiteUtils.readTransmissionData();
-            DataParser.saveFile(transmissionList, "Transmission List");
-
-            LinkedList<VehicleType> vehicleTypeList = SQLiteUtils.readVehicleTypeData();
-            DataParser.saveFile(vehicleTypeList, "Vehicle Type List");
-
-            LinkedList<LegalMake_Model> legalMake_ModelList = DataParser.readThroughMake_ModelList(make_modelList, makeList, modelList);
-            DataParser.saveFile(legalMake_ModelList, "Legal Make_Model List");
-
-            App.legalMake_ModelList = legalMake_ModelList;
-        } else {
-            LinkedList<LegalMake_Model> legalMake_ModelList = DataParser.readFile("Legal Make_Model List.dat");
-            App.legalMake_ModelList = legalMake_ModelList;
-        }
+//        File f = new File("Legal Make_Model List.dat");
+//        if (!f.exists()) {
+//            System.out.println("Initializing project files...");
+//            LinkedList<BatteryType> batteryTypeList = SQLiteUtils.readBatteryTypeData();
+//            DataParser.saveFile(batteryTypeList, "Battery Type List");
+//
+//            LinkedList<BodyStyle> bodyStyleList = SQLiteUtils.readBodyStyleData();
+//            DataParser.saveFile(bodyStyleList, "Body Style List");
+//
+//            LinkedList<DriveType> driveTypeList = SQLiteUtils.readDriveTypeData();
+//            DataParser.saveFile(driveTypeList, "Drive Type List");
+//
+//            LinkedList<EngineModel> engineModelList = SQLiteUtils.readEngineModelData();
+//            DataParser.saveFile(engineModelList, "Engine Model List");
+//
+//            LinkedList<EngineModelPattern> engineModelPatternList = SQLiteUtils.readEngineModelPatternData();
+//            DataParser.saveFile(engineModelPatternList, "Engine Model Pattern List");
+//
+//            LinkedList<Element> elementList = SQLiteUtils.readElementData();
+//            DataParser.saveFile(elementList, "Element List");
+//
+//            LinkedList<FuelType> fuelTypeList = SQLiteUtils.readFuelTypeData();
+//            DataParser.saveFile(fuelTypeList, "Fuel Type List");
+//
+//            LinkedList<Make_Model> make_modelList = SQLiteUtils.readMake_ModelData();
+//            DataParser.saveFile(make_modelList, "Make_Model List");
+//
+//            LinkedList<Make> makeList = SQLiteUtils.readMakeData();
+//            DataParser.saveFile(makeList, "Make List");
+//
+//            LinkedList<Model> modelList = SQLiteUtils.readModelData();
+//            DataParser.saveFile(modelList, "Model List");
+//
+//            LinkedList<Transmission> transmissionList = SQLiteUtils.readTransmissionData();
+//            DataParser.saveFile(transmissionList, "Transmission List");
+//
+//            LinkedList<VehicleType> vehicleTypeList = SQLiteUtils.readVehicleTypeData();
+//            DataParser.saveFile(vehicleTypeList, "Vehicle Type List");
+//
+//            LinkedList<LegalMake_Model> legalMake_ModelList = DataParser.readThroughMake_ModelList(make_modelList, makeList, modelList);
+//            DataParser.saveFile(legalMake_ModelList, "Legal Make_Model List");
+//
+//            App.legalMake_ModelList = legalMake_ModelList;
+//        } else {
+//            LinkedList<LegalMake_Model> legalMake_ModelList = DataParser.readFile("Legal Make_Model List.dat");
+//            App.legalMake_ModelList = legalMake_ModelList;
+//        }
         launch();
     }
 
