@@ -16,6 +16,7 @@ import bcs.csc.car.api.sql.model.vehicle.VehicleType;
 import bcs.csc.car.api.sql.utils.DataParser;
 import bcs.csc.car.api.sql.utils.SQLiteUtils;
 import bcs.csc.car.api.firebase.FirestoreContext;
+import bcs.csc.car.api.firebase.model.SampleUser;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.auth.FirebaseAuth;
 import java.io.File;
@@ -63,6 +64,15 @@ public class App extends Application {
         stage.setTitle("Firebase Test Suite");
         stage.setScene(scene);
         stage.show();
+        
+//        System.out.println("Add new user to Firebase");
+//        SampleUser.addUser(new SampleUser("test@email.com", "averysecurepassword"));
+//        SampleUser.addUser(new SampleUser("test2@email.com", "averysecurepassword2"));
+        System.out.println("Success");
+        
+        SampleUser.readUsers();
+        
+        
     }
 
     static void setRoot(String fxml) throws IOException {
