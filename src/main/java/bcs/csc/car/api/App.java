@@ -27,14 +27,22 @@ import java.util.LinkedList;
 
 public class App extends Application {
 
+    /**
+     * File Access Strings
+     */
     public static final String VIEW_PATH = "view/";
+    public static final String RESOURCES_PATH = "./src/main/resources/";
+
+    /**
+     * App Objects
+     */
     private static Scene scene;
     public static LinkedList<LegalMake_Model> legalMake_ModelList = new LinkedList<>();
 
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML(VIEW_PATH + "loginWindow"));
-        stage.setTitle("Mini Car Project");
+        stage.setTitle("Car Project");
         stage.setScene(scene);
         stage.show();
     }
