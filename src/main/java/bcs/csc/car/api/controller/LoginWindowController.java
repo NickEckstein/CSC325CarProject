@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -21,34 +22,27 @@ import javafx.scene.control.TextField;
 public class LoginWindowController implements Initializable {
     
     @FXML
-    private TextField usernameTextField;
+    private TextField username;
 
     @FXML
-    private TextField passwordTextField;
+    private TextField password;
 
     @FXML
     private Button loginButton;
     
-    
-    String username;
-    String password;
-    
+    @FXML
+    private Label status;
 
     @FXML
     void onClickLoginPressed(ActionEvent event) {
-
+        
+        if (!(username.getText().isBlank() && password.getText().isBlank())) {
+            status.setText("Login successful!");
+        } 
+        else {
+            status.setText("Invalid user/password. Please try again.");
+        }
     }
-
-    @FXML
-    void verifyPassword(ActionEvent event) {
-
-    }
-
-    @FXML
-    void verifyUsername(ActionEvent event) {
-
-    } 
-
     /**
      * Initializes the controller class.
      */
