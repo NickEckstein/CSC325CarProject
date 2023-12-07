@@ -1,0 +1,82 @@
+.parent {
+    -fx-background-color: transparent;
+}
+
+.background {
+    -fx-background-color: #5a74a0;
+    
+}
+
+.light-background {
+    -fx-background-color: #bac5d8;
+    
+}
+
+.text {
+    -fx-text-fill: #ffffff;
+    -fx-font: 18px 'Segoe UI';
+}
+
+.buttons {
+    -fx-background-color: #899cbd;
+    -fx-background-radius: 4px;
+    -fx-text-fill: #ffffff;
+    
+}
+
+.smallbuttons {
+    -fx-background-color: #899cbd;
+    -fx-background-radius: 4px;
+    -fx-text-fill: #ffffff;
+    
+}
+
+.combobuttons {
+    -fx-background-color: #899cbd;
+    -fx-background-radius: 4px;
+    -fx-text-fill: #ffffff;
+    -fx-font: 18px 'Segoe UI';
+    
+}
+
+.smallcombobuttons {
+    -fx-background-color: #899cbd;
+    -fx-background-radius: 4px;
+    -fx-text-fill: #ffffff;
+    -fx-font: 12px 'Segoe UI';
+    
+}
+
+.textarea {
+    -fx-background-color: #bac5d8;
+    -fx-promptText-color: #000000;
+    -fx-font: 18px 'Segoe UI';
+    -fx-text-fill: #ffffff;
+}
+
+.smalltextarea {
+    -fx-background-color: #bac5d8;
+    -fx-promptText-color: #000000;
+    -fx-font: 12px 'Segoe UI';
+    -fx-text-fill: #ffffff;
+}
+.textarea .content{
+    -fx-background-color: #bac5d8;
+    -fx-promptText-color: #000000;
+    -fx-text-color: #000000;
+}
+
+.main-buttons:hover {
+    -fx-background-color: #899cbd;
+    -fx-background-radius: 0px;
+    -fx-background-width: 0px, 0px, 3px, 0px;
+}
+
+.header {
+    -fx-background-color: #5a74a0;
+    -fx-text-fill: #ffffff;
+    -fx-font: 36px 'Segoe UI Bold';
+    -fx-background-radius: 0px;
+    -fx-background-width: 0px, 0px, 0px, 0px;
+    -fx-fill-color: #5a74a0;
+}
