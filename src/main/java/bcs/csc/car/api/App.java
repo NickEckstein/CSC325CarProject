@@ -71,8 +71,6 @@ public class App extends Application {
         System.out.println("Success");
         
         SampleUser.readUsers();
-        
-        
     }
 
     static void setRoot(String fxml) throws IOException {
