@@ -86,6 +86,8 @@ public class VehicleTableController {
     @FXML
     private TableColumn<Vehicle, Long> numberOfAccidentsTableColumn;
     @FXML
+    private TableColumn<Vehicle, String> accidentDescriptionTableColumn;
+    @FXML
     private TableColumn<Vehicle, Double> priceTableColumn;
 
     private static ObservableList<Vehicle> vehicleList = FXCollections.observableArrayList();
@@ -121,6 +123,7 @@ public class VehicleTableController {
         conditionDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("conditionDescription"));
         numberOfAccidentsTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Long>("numberOfAccidents"));
         priceTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Double>("price"));
+        accidentDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("accidentDescription"));
 
         vehicleTableView.setItems(vehicleList);
         statusLabel.setText("");
