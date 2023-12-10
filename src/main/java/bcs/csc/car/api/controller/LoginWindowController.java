@@ -19,7 +19,7 @@ import javafx.scene.control.Label;
  *
  * @author Meraj Ali
  */
-public class LoginWindowController implements Initializable {
+public class LoginWindowController {
     
     @FXML
     private TextField username;
@@ -42,13 +42,6 @@ public class LoginWindowController implements Initializable {
         else {
             status.setText("Invalid user/password. Please try again.");
         }
-    }
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }
 
     

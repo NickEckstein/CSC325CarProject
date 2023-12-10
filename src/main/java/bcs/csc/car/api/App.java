@@ -16,7 +16,7 @@ import bcs.csc.car.api.sql.model.vehicle.VehicleType;
 import bcs.csc.car.api.sql.utils.DataParser;
 import bcs.csc.car.api.sql.utils.SQLiteUtils;
 import bcs.csc.car.api.firebase.FirestoreContext;
-import bcs.csc.car.api.firebase.model.SampleUser;
+import bcs.csc.car.api.firebase.model.User;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.auth.FirebaseAuth;
 import java.io.File;
@@ -40,7 +40,7 @@ public class App extends Application {
      */
     public static final String VIEW_PATH = "view/";
     public static final String RESOURCES_PATH = "./src/main/resources/";
-    public static final String LOAD_FXML_FILE_NAME = "sampleFirebase";
+    public static final String LOAD_FXML_FILE_NAME = "loginView";
 
     /**
      * App Objects
@@ -55,26 +55,31 @@ public class App extends Application {
     public static FirebaseAuth fauth;
     private final FirestoreContext contxtFirebase = new FirestoreContext();
 
+    /**
+     * Selected User Upon Login
+     */
+    public static User user = null;
+
+    /**
+     * Final Data Types
+     */
+    public final static String[] colors = {"Black", "Blue", "Brown", "Gold", "Gray", "Green", "Orange", "Purple", "Red", "Silver", "Tan", "White", "Yellow"};
+    public final static String[] fuelTypes = {"Gasoline", "Electric", "Hybrid"};
+
     @Override
     public void start(Stage stage) throws IOException {
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
 
-        scene = new Scene(loadFXML(VIEW_PATH + LOAD_FXML_FILE_NAME));
-        stage.setTitle("Firebase Test Suite");
+        scene = new Scene(loadFXML(VIEW_PATH + LOAD_FXML_FILE_NAME), 1080, 796);
+        stage.setTitle("Car Project");
         stage.setScene(scene);
         stage.show();
-        
-//        System.out.println("Add new user to Firebase");
-//        SampleUser.addUser(new SampleUser("test@email.com", "averysecurepassword"));
-//        SampleUser.addUser(new SampleUser("test2@email.com", "averysecurepassword2"));
-        System.out.println("Success");
-        
-        SampleUser.readUsers();
     }
 
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+        System.out.println("Scene changed to " + fxml);
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

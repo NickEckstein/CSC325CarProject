@@ -8,10 +8,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
- * 
+ *
  * @author Brian Niski
  */
-public class ImageViewController {
+public class NoLoginImageViewController {
 
     @FXML
     private ImageView imageView;
@@ -27,7 +27,7 @@ public class ImageViewController {
 
     public void initialize() {
         try {
-            selectedVehicle = VehicleTableController.getVehicleList().get(VehicleTableController.getSelectedVehicleID());
+            selectedVehicle = NoLoginViewController.observableList.get(NoLoginViewController.selectedIndex);
             imageIndex = 0;
             imageView.setImage(selectedVehicle.getImageList().get(imageIndex));
         } catch (Exception e) {
@@ -49,7 +49,7 @@ public class ImageViewController {
 
     @FXML
     private void closeButtonOnAction(ActionEvent event) {
-        Stage imageStage = VehicleTableController.getImageStage();
+        Stage imageStage = NoLoginViewController.imageStage;
         imageStage.close();
     }
 

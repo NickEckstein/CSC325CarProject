@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bcs.csc.car.api.controller.EditRecordViewController">
    <children>
       <TextField alignment="CENTER" styleClass="header" stylesheets="@stylesheet.css" text="Edit Vehicle" />
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@stylesheet.css">
@@ -42,7 +41,6 @@
             <Label styleClass="text" stylesheets="@stylesheet.css" text="Year" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <TextField fx:id="yearTextField" alignment="CENTER" editable="false" promptText="Enter Year" styleClass="textarea" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Label styleClass="text" stylesheets="@stylesheet.css" text="Color" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-            <ComboBox fx:id="colorComboBox" promptText="Colors" styleClass="combobuttons" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             <Label styleClass="text" stylesheets="@stylesheet.css" text="Fuel Type" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
             <ComboBox fx:id="fuelTypesComboBox" promptText="Fuel Types" styleClass="combobuttons" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
             <Label styleClass="text" stylesheets="@stylesheet.css" text="Miles" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
@@ -72,6 +70,8 @@
             </Button>
             <Label styleClass="text" stylesheets="@stylesheet.css" text="Number of Accidents" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
             <TextField fx:id="accidentsTextField" alignment="CENTER" promptText="Enter Number of Accidents" styleClass="textarea" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#goBackToSellerView" styleClass="buttons" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
+            <TextField fx:id="colorsTextField" alignment="CENTER" editable="false" promptText="Enter Color" styleClass="textarea" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

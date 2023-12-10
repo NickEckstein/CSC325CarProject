@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<fx:root type="VBox" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="addRecordView">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bcs.csc.car.api.controller.AddRecordViewController">
    <children>
       <TextField alignment="CENTER" styleClass="header" stylesheets="@stylesheet.css" text="Add Vehicle" />
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@stylesheet.css">
@@ -59,7 +58,6 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <ComboBox fx:id="colorComboBox" promptText="Colors" styleClass="combobuttons" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
             <Label styleClass="text" text="Fuel Type" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
@@ -116,7 +114,9 @@
             </Button>
             <TextField fx:id="modelTextField" alignment="CENTER" promptText="Enter Model" styleClass="textarea" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="makeTextField" alignment="CENTER" promptText="Enter Make" styleClass="textarea" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#goBackToSellerView" styleClass="buttons" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER" />
+            <TextField fx:id="colorsTextField" alignment="CENTER" promptText="Enter Color" styleClass="textarea" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
    </children>
-</fx:root>
+</VBox>

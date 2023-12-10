@@ -10,11 +10,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bcs.csc.car.api.controller.LoginViewController">
    <children>
       <TextField alignment="CENTER" styleClass="header" stylesheets="@stylesheet.css" text="Login" />
-      <GridPane prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@stylesheet.css">
+      <GridPane styleClass="background" stylesheets="@stylesheet.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" />
         </columnConstraints>
@@ -48,7 +47,7 @@
                   <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#openCreateAccountView" styleClass="buttons" stylesheets="@stylesheet.css" text="Create Account" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
-            <Button fx:id="browseWithoutSigningInButton" mnemonicParsing="false" styleClass="buttons" stylesheets="@stylesheet.css" text="Browse Without Signing In" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="browseWithoutSigningInButton" mnemonicParsing="false" onAction="#openNoLoginView" styleClass="buttons" stylesheets="@stylesheet.css" text="Browse Without Signing In" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </children>

@@ -2,7 +2,7 @@ package bcs.csc.car.api.controller;
 
 import bcs.csc.car.api.App;
 import bcs.csc.car.api.model.LegalMake_Model;
-import bcs.csc.car.api.model.Vehicle;
+import bcs.csc.car.api.model.SampleVehicle;
 import bcs.csc.car.api.sql.model.battery.BatteryType;
 import bcs.csc.car.api.sql.model.body.BodyStyle;
 import bcs.csc.car.api.sql.model.drive.DriveType;
@@ -34,7 +34,7 @@ import javafx.stage.Stage;
  *
  * @author Brian Niski
  */
-public class VehicleTableController {
+public class SampleVehicleTableController {
 
     @FXML
     private Button showImagesButton;
@@ -54,43 +54,43 @@ public class VehicleTableController {
     private LinkedList<VehicleType> vehicleTypeList = new LinkedList<>();
 
     @FXML
-    private TableView<Vehicle> vehicleTableView;
+    private TableView<SampleVehicle> vehicleTableView;
     @FXML
-    private TableColumn<Vehicle, Long> idTableColumn;
+    private TableColumn<SampleVehicle, Long> idTableColumn;
     @FXML
-    private TableColumn<Vehicle, BatteryType> batteryTypeTableColumn;
+    private TableColumn<SampleVehicle, BatteryType> batteryTypeTableColumn;
     @FXML
-    private TableColumn<Vehicle, BodyStyle> bodyStyleTableColumn;
+    private TableColumn<SampleVehicle, BodyStyle> bodyStyleTableColumn;
     @FXML
-    private TableColumn<Vehicle, DriveType> driveTypeTableColumn;
+    private TableColumn<SampleVehicle, DriveType> driveTypeTableColumn;
     @FXML
-    private TableColumn<Vehicle, EngineModel> engineModelTableColumn;
+    private TableColumn<SampleVehicle, EngineModel> engineModelTableColumn;
     @FXML
-    private TableColumn<Vehicle, FuelType> fuelTypeTableColumn;
+    private TableColumn<SampleVehicle, FuelType> fuelTypeTableColumn;
     @FXML
-    private TableColumn<Vehicle, Make> makeTableColumn;
+    private TableColumn<SampleVehicle, Make> makeTableColumn;
     @FXML
-    private TableColumn<Vehicle, Model> modelTableColumn;
+    private TableColumn<SampleVehicle, Model> modelTableColumn;
     @FXML
-    private TableColumn<Vehicle, Transmission> transmissionTableColumn;
+    private TableColumn<SampleVehicle, Transmission> transmissionTableColumn;
     @FXML
-    private TableColumn<Vehicle, VehicleType> vehicleTypeTableColumn;
+    private TableColumn<SampleVehicle, VehicleType> vehicleTypeTableColumn;
     @FXML
-    private TableColumn<Vehicle, Long> yearTableColumn;
+    private TableColumn<SampleVehicle, Long> yearTableColumn;
     @FXML
-    private TableColumn<Vehicle, Long> milesTableColumn;
+    private TableColumn<SampleVehicle, Long> milesTableColumn;
     @FXML
-    private TableColumn<Vehicle, String> colorTableColumn;
+    private TableColumn<SampleVehicle, String> colorTableColumn;
     @FXML
-    private TableColumn<Vehicle, String> conditionDescriptionTableColumn;
+    private TableColumn<SampleVehicle, String> conditionDescriptionTableColumn;
     @FXML
-    private TableColumn<Vehicle, Long> numberOfAccidentsTableColumn;
+    private TableColumn<SampleVehicle, Long> numberOfAccidentsTableColumn;
     @FXML
-    private TableColumn<Vehicle, String> accidentDescriptionTableColumn;
+    private TableColumn<SampleVehicle, String> accidentDescriptionTableColumn;
     @FXML
-    private TableColumn<Vehicle, Double> priceTableColumn;
+    private TableColumn<SampleVehicle, Double> priceTableColumn;
 
-    private static ObservableList<Vehicle> vehicleList = FXCollections.observableArrayList();
+    private static ObservableList<SampleVehicle> vehicleList = FXCollections.observableArrayList();
 
     private static Stage imageStage = new Stage();
     private static int selectedVehicleID;
@@ -107,23 +107,23 @@ public class VehicleTableController {
         transmissionList = DataParser.readFile("Transmission List.dat");
         vehicleTypeList = DataParser.readFile("Vehicle Type List.dat");
 
-        idTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Long>("vehicleID"));
-        batteryTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, BatteryType>("batteryType"));
-        bodyStyleTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, BodyStyle>("bodyStyle"));
-        driveTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, DriveType>("driveType"));
-        engineModelTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, EngineModel>("engineModel"));
-        fuelTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, FuelType>("fuelType"));
-        makeTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Make>("make"));
-        modelTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Model>("model"));
-        transmissionTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Transmission>("transmission"));
-        vehicleTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, VehicleType>("vehicleType"));
-        yearTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Long>("year"));
-        milesTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Long>("miles"));
-        colorTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("color"));
-        conditionDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("conditionDescription"));
-        numberOfAccidentsTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Long>("numberOfAccidents"));
-        priceTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Double>("price"));
-        accidentDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("accidentDescription"));
+        idTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, Long>("vehicleID"));
+        batteryTypeTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, BatteryType>("batteryType"));
+        bodyStyleTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, BodyStyle>("bodyStyle"));
+        driveTypeTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, DriveType>("driveType"));
+        engineModelTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, EngineModel>("engineModel"));
+        fuelTypeTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, FuelType>("fuelType"));
+        makeTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, Make>("make"));
+        modelTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, Model>("model"));
+        transmissionTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, Transmission>("transmission"));
+        vehicleTypeTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, VehicleType>("vehicleType"));
+        yearTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, Long>("year"));
+        milesTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, Long>("miles"));
+        colorTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, String>("color"));
+        conditionDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, String>("conditionDescription"));
+        numberOfAccidentsTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, Long>("numberOfAccidents"));
+        priceTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, Double>("price"));
+        accidentDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<SampleVehicle, String>("accidentDescription"));
 
         vehicleTableView.setItems(vehicleList);
         statusLabel.setText("");
@@ -154,11 +154,11 @@ public class VehicleTableController {
         return selectedVehicleID;
     }
 
-    public TableView<Vehicle> getVehicleTableView() {
+    public TableView<SampleVehicle> getVehicleTableView() {
         return vehicleTableView;
     }
 
-    public static ObservableList<Vehicle> getVehicleList() {
+    public static ObservableList<SampleVehicle> getVehicleList() {
         return vehicleList;
     }
 
@@ -166,7 +166,7 @@ public class VehicleTableController {
     private void showAddVehicleView(ActionEvent event) {
         // Random vehicle info for now
         LegalMake_Model randomLegalMake_Model = legalMake_ModelList.get((int) (Math.random() * legalMake_ModelList.size() - 1));
-        Vehicle vehicle = new Vehicle(batteryTypeList.get(randomIndexFromList(batteryTypeList)).getBatteryName(), bodyStyleList.get(randomIndexFromList(bodyStyleList)).getBodyStyleName(), driveTypeList.get(randomIndexFromList(driveTypeList)).getDriveTypeName(), engineModelList.get(randomIndexFromList(engineModelList)).getEngineModelName(), fuelTypeList.get(randomIndexFromList(fuelTypeList)).getName(), randomLegalMake_Model.getMakeName(), randomLegalMake_Model.getModelName(), transmissionList.get(randomIndexFromList(transmissionList)).getTransmissionName(), vehicleTypeList.get(randomIndexFromList(vehicleTypeList)).getVehicleTypeName(), 0, 0, "Blank", "None", 0, 25);
+        SampleVehicle vehicle = new SampleVehicle(batteryTypeList.get(randomIndexFromList(batteryTypeList)).getBatteryName(), bodyStyleList.get(randomIndexFromList(bodyStyleList)).getBodyStyleName(), driveTypeList.get(randomIndexFromList(driveTypeList)).getDriveTypeName(), engineModelList.get(randomIndexFromList(engineModelList)).getEngineModelName(), fuelTypeList.get(randomIndexFromList(fuelTypeList)).getName(), randomLegalMake_Model.getMakeName(), randomLegalMake_Model.getModelName(), transmissionList.get(randomIndexFromList(transmissionList)).getTransmissionName(), vehicleTypeList.get(randomIndexFromList(vehicleTypeList)).getVehicleTypeName(), 0, 0, "Blank", "None", 0, 25);
         vehicleList.add(vehicle);
         vehicleTableView.getSelectionModel().clearSelection();
     }
