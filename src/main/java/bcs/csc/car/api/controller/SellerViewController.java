@@ -2,7 +2,10 @@ package bcs.csc.car.api.controller;
 
 import bcs.csc.car.api.App;
 import bcs.csc.car.api.firebase.model.Vehicle;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintStream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +20,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 /**
@@ -132,6 +137,24 @@ public class SellerViewController {
 
     @FXML
     private void exportTable(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+        fileChooser.getExtensionFilters().add(new ExtensionFilter("CSV", "*.CSV"));
+        File selectedFile = fileChooser.showSaveDialog(null);
+        String content = "";
+        if (selectedFile != null) {
+            PrintStream outFile = null;
+            for (int i = 0; i < sellerObservableList.size(); i++) {
+                content += sellerObservableList.get(i).getMake() + "," + sellerObservableList.get(i).getModel() + "," + sellerObservableList.get(i).getYear() + "," + sellerObservableList.get(i).getColor() + "," + sellerObservableList.get(i).getFuelType() + "," + sellerObservableList.get(i).getMiles() + "," + sellerObservableList.get(i).getAccidents() + "," + sellerObservableList.get(i).getPrice() + "," + sellerObservableList.get(i).getAdditionalInformation() + "\n";
+            }
+            try {
+                outFile = new PrintStream(selectedFile);
+                outFile.print(content);
+            } catch (FileNotFoundException ex) {
+            }
+            outFile.close();
+            statusLabel.setText("Saved file to " + selectedFile.getAbsolutePath());
+        }
     }
 
     @FXML
