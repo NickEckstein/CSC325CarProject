@@ -1,11 +1,8 @@
 package bcs.csc.car.api.controller;
 
 import bcs.csc.car.api.App;
-import bcs.csc.car.api.firebase.utils.FirebaseCollectionUtils;
-import bcs.csc.car.api.model.Vehicle;
+import bcs.csc.car.api.firebase.model.Vehicle;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -68,22 +65,28 @@ public class SellerViewController {
     @FXML
     private TextArea additionalInformationTextArea;
 
-    public static ObservableList<Vehicle> observableList = FXCollections.observableArrayList();
-    public static Stage imageStage = new Stage();
-    public static int selectedIndex = -1;
+    public static ObservableList<Vehicle> sellerObservableList = FXCollections.observableArrayList();
+    public static Stage sellerImageStage = new Stage();
+    public static int sellerSelectedIndex = -1;
+    private static boolean isSelected = false;
 
     public void initialize() {
-        makeTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("make"));
-        modelTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("model"));
-        yearTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Integer>("year"));
-        colorTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("color"));
-        fuelTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("fuel_type"));
-        milesTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Integer>("miles"));
-        accidentsTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Integer>("accidents"));
-        priceTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Double>("price"));
+        sellerObservableList.clear();
+        makeTableColumn.setCellValueFactory(new PropertyValueFactory<>("Make"));
+        modelTableColumn.setCellValueFactory(new PropertyValueFactory<>("Model"));
+        yearTableColumn.setCellValueFactory(new PropertyValueFactory<>("Year"));
+        colorTableColumn.setCellValueFactory(new PropertyValueFactory<>("Color"));
+        fuelTypeTableColumn.setCellValueFactory(new PropertyValueFactory<>("FuelType"));
+        milesTableColumn.setCellValueFactory(new PropertyValueFactory<>("Miles"));
+        accidentsTableColumn.setCellValueFactory(new PropertyValueFactory<>("Accidents"));
+        priceTableColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
 
-        FirebaseCollectionUtils.readLoggedInToSellerObservableList();
-
+        for (int i = 0; i < App.vehicles.size(); i++) {
+            if (App.vehicles.get(i).getEmail().equals(App.user.getEmail())) {
+                sellerObservableList.add(App.vehicles.get(i));
+            }
+        }
+        tableView.setItems(sellerObservableList);
         userNameLabel.setText(App.user.getFirstName() + " " + App.user.getLastName());
     }
 
@@ -107,7 +110,7 @@ public class SellerViewController {
 
     @FXML
     private void openEditRecordView(ActionEvent event) {
-        if (selectedIndex != -1) {
+        if (isSelected) {
             try {
                 App.setRoot(App.VIEW_PATH + "editRecordView");
             } catch (IOException ex) {
@@ -118,7 +121,7 @@ public class SellerViewController {
 
     @FXML
     private void openDeleteRecordView(ActionEvent event) {
-        if (selectedIndex != -1) {
+        if (isSelected) {
             try {
                 App.setRoot(App.VIEW_PATH + "deleteRecordView");
             } catch (IOException ex) {
@@ -143,13 +146,15 @@ public class SellerViewController {
 
     @FXML
     private void getSelectedRecordOnMousePress(MouseEvent event) {
-        selectedIndex = -1;
+        sellerSelectedIndex = -1;
         try {
-            selectedIndex = tableView.getSelectionModel().getSelectedIndex();
-            additionalInformationTextArea.setText(observableList.get(selectedIndex).getAdditionalInformation());
+            sellerSelectedIndex = tableView.getSelectionModel().getSelectedIndex();
+            additionalInformationTextArea.setText(sellerObservableList.get(sellerSelectedIndex).getAdditionalInformation());
+            isSelected = true;
             statusLabel.setText("A vehicle has been selected");
         } catch (Exception e) {
-            if (selectedIndex == -1) {
+            if (sellerSelectedIndex == -1) {
+                isSelected = false;
                 statusLabel.setText("A vehicle has not been selected");
             }
         }
@@ -157,14 +162,14 @@ public class SellerViewController {
 
     @FXML
     private void openImagesView(ActionEvent event) {
-        if (selectedIndex != -1) {
+        if (isSelected) {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(App.VIEW_PATH + "sellerImageView.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
-                imageStage = new Stage();
-                imageStage.setScene(new Scene(root1));
-                imageStage.setTitle("Image Viewer");
-                imageStage.showAndWait();
+                sellerImageStage = new Stage();
+                sellerImageStage.setScene(new Scene(root1));
+                sellerImageStage.setTitle("Image Viewer");
+                sellerImageStage.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
                 e.getMessage();

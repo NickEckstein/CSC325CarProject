@@ -45,6 +45,7 @@ public class RegisterViewController {
                     if (!FirebaseCollectionUtils.scanCollectionForMatchingEmail(user.getEmail())) {
                         System.out.println("New user with unique email: " + user.getEmail());
                         FirebaseCollectionUtils.addUserToCollection(user);
+                        App.users.add(user);
                         try {
                             App.setRoot(App.VIEW_PATH + "loginView");
                         } catch (IOException ex) {

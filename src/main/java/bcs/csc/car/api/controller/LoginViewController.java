@@ -31,7 +31,6 @@ public class LoginViewController {
         if (!(usernameTextField.getText().isEmpty() && passwordTextField.getText().isEmpty())) {
             if (FirebaseCollectionUtils.scanCollectionForMatchingLogin(usernameTextField.getText(), passwordTextField.getText())) {
                 try {
-                    FirebaseCollectionUtils.updateAppUserUponLogin(usernameTextField.getText(), passwordTextField.getText());
                     App.setRoot(App.VIEW_PATH + "sellerView");
                 } catch (IOException ex) {
 

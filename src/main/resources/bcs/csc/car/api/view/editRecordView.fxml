@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -42,7 +41,6 @@
             <TextField fx:id="yearTextField" alignment="CENTER" editable="false" promptText="Enter Year" styleClass="textarea" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Label styleClass="text" stylesheets="@stylesheet.css" text="Color" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             <Label styleClass="text" stylesheets="@stylesheet.css" text="Fuel Type" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-            <ComboBox fx:id="fuelTypesComboBox" promptText="Fuel Types" styleClass="combobuttons" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
             <Label styleClass="text" stylesheets="@stylesheet.css" text="Miles" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
             <TextField fx:id="milesTextField" alignment="CENTER" promptText="Enter Miles" styleClass="textarea" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
             <Label styleClass="text" stylesheets="@stylesheet.css" text="Price" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
@@ -72,6 +70,7 @@
             <TextField fx:id="accidentsTextField" alignment="CENTER" promptText="Enter Number of Accidents" styleClass="textarea" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#goBackToSellerView" styleClass="buttons" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
             <TextField fx:id="colorsTextField" alignment="CENTER" editable="false" promptText="Enter Color" styleClass="textarea" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="fuelTypeTextField" alignment="CENTER" editable="false" promptText="Enter Fuel Type" styleClass="textarea" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

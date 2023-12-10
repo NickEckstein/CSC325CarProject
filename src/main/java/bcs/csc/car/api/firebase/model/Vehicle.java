@@ -1,4 +1,4 @@
-package bcs.csc.car.api.model;
+package bcs.csc.car.api.firebase.model;
 
 import java.util.LinkedList;
 import javafx.beans.property.SimpleDoubleProperty;

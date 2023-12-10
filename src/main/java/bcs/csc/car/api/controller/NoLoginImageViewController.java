@@ -1,6 +1,6 @@
 package bcs.csc.car.api.controller;
 
-import bcs.csc.car.api.model.Vehicle;
+import bcs.csc.car.api.firebase.model.Vehicle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -22,14 +22,14 @@ public class NoLoginImageViewController {
     @FXML
     private Button nextButton;
 
-    private Vehicle selectedVehicle;
+    private Vehicle noLoginSelectedVehicle;
     private int imageIndex;
 
     public void initialize() {
         try {
-            selectedVehicle = NoLoginViewController.observableList.get(NoLoginViewController.selectedIndex);
+            noLoginSelectedVehicle = NoLoginViewController.fullObservableList.get(NoLoginViewController.noLoginSelectedIndex);
             imageIndex = 0;
-            imageView.setImage(selectedVehicle.getImageList().get(imageIndex));
+            imageView.setImage(noLoginSelectedVehicle.getImageList().get(imageIndex));
         } catch (Exception e) {
             System.out.println("No vehicle selected or end of image list...");
         }
@@ -41,7 +41,7 @@ public class NoLoginImageViewController {
             imageIndex--;
         }
         try {
-            imageView.setImage(selectedVehicle.getImageList().get(imageIndex));
+            imageView.setImage(noLoginSelectedVehicle.getImageList().get(imageIndex));
         } catch (Exception e) {
             System.out.println("No vehicle selected or end of image list...");
         }
@@ -49,17 +49,17 @@ public class NoLoginImageViewController {
 
     @FXML
     private void closeButtonOnAction(ActionEvent event) {
-        Stage imageStage = NoLoginViewController.imageStage;
+        Stage imageStage = NoLoginViewController.noLoginImageStage;
         imageStage.close();
     }
 
     @FXML
     private void nextButtonOnAction(ActionEvent event) {
         try {
-            if (imageIndex < selectedVehicle.getImageList().size() - 1) {
+            if (imageIndex < noLoginSelectedVehicle.getImageList().size() - 1) {
                 imageIndex++;
             }
-            imageView.setImage(selectedVehicle.getImageList().get(imageIndex));
+            imageView.setImage(noLoginSelectedVehicle.getImageList().get(imageIndex));
         } catch (Exception e) {
             System.out.println("No vehicle selected or end of image list...");
         }

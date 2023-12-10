@@ -1,13 +1,20 @@
 package bcs.csc.car.api.controller;
 
 import bcs.csc.car.api.App;
+import static bcs.csc.car.api.App.users;
+import static bcs.csc.car.api.App.vehicles;
+import bcs.csc.car.api.firebase.model.User;
 import bcs.csc.car.api.firebase.utils.FirebaseCollectionUtils;
-import bcs.csc.car.api.model.Vehicle;
+import bcs.csc.car.api.firebase.model.Vehicle;
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +39,8 @@ import javafx.stage.Stage;
  */
 public class NoLoginViewController {
 
+    @FXML
+    private Button refreshButton;
     @FXML
     private Button exitButton;
     @FXML
@@ -63,45 +72,25 @@ public class NoLoginViewController {
     @FXML
     private TextField searchTextField;
 
-    public static ObservableList<Vehicle> observableList = FXCollections.observableArrayList();
-    public static Stage imageStage = new Stage();
-    public static int selectedIndex = -1;
+    public static ObservableList<Vehicle> fullObservableList = FXCollections.observableArrayList();
+    public static Stage noLoginImageStage = new Stage();
+    public static int noLoginSelectedIndex = -1;
 
     public void initialize() {
-        makeTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("make"));
-        modelTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("model"));
-        yearTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Integer>("year"));
-        colorTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("color"));
-        fuelTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("fuel_type"));
-        milesTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Integer>("miles"));
-        accidentsTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Integer>("accidents"));
-        priceTableColumn.setCellValueFactory(new PropertyValueFactory<Vehicle, Double>("price"));
+        fullObservableList.clear();
+        makeTableColumn.setCellValueFactory(new PropertyValueFactory<>("Make"));
+        modelTableColumn.setCellValueFactory(new PropertyValueFactory<>("Model"));
+        yearTableColumn.setCellValueFactory(new PropertyValueFactory<>("Year"));
+        colorTableColumn.setCellValueFactory(new PropertyValueFactory<>("Color"));
+        fuelTypeTableColumn.setCellValueFactory(new PropertyValueFactory<>("FuelType"));
+        milesTableColumn.setCellValueFactory(new PropertyValueFactory<>("Miles"));
+        accidentsTableColumn.setCellValueFactory(new PropertyValueFactory<>("Accidents"));
+        priceTableColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
 
-        FirebaseCollectionUtils.readAllToObservableList();
-
-        FilteredList<Vehicle> filteredData = new FilteredList<>(observableList, b -> true);
-        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(vehicle -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                String lowerCaseFilter = newValue.toLowerCase();
-                if (vehicle.getMake().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (vehicle.getModel().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
+        for (int i = 0; i < App.vehicles.size(); i++) {
+            fullObservableList.add(App.vehicles.get(i));
         }
-        );
-        SortedList<Vehicle> sortedData = new SortedList<>(filteredData);
-
-        sortedData.comparatorProperty()
-                .bind(tableView.comparatorProperty());
-
-        tableView.setItems(observableList);
+        tableView.setItems(fullObservableList);
     }
 
     @FXML
@@ -119,13 +108,13 @@ public class NoLoginViewController {
 
     @FXML
     private void getSelectedRecordOnMousePress(MouseEvent event) {
-        selectedIndex = -1;
+        noLoginSelectedIndex = -1;
         try {
-            selectedIndex = tableView.getSelectionModel().getSelectedIndex();
-            additionalInformationTextArea.setText(observableList.get(selectedIndex).getAdditionalInformation());
+            noLoginSelectedIndex = tableView.getSelectionModel().getSelectedIndex();
+            additionalInformationTextArea.setText(fullObservableList.get(noLoginSelectedIndex).getAdditionalInformation());
             statusLabel.setText("A vehicle has been selected");
         } catch (Exception e) {
-            if (selectedIndex == -1) {
+            if (noLoginSelectedIndex == -1) {
                 statusLabel.setText("A vehicle has not been selected");
             }
         }
@@ -133,15 +122,15 @@ public class NoLoginViewController {
 
     @FXML
     private void openImagesView(ActionEvent event) {
-        if (selectedIndex != -1) {
+        if (noLoginSelectedIndex != -1) {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(App.class
                         .getResource(App.VIEW_PATH + "noLoginImageView.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
-                imageStage = new Stage();
-                imageStage.setScene(new Scene(root1));
-                imageStage.setTitle("Image Viewer");
-                imageStage.showAndWait();
+                noLoginImageStage = new Stage();
+                noLoginImageStage.setScene(new Scene(root1));
+                noLoginImageStage.setTitle("Image Viewer");
+                noLoginImageStage.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
                 e.getMessage();
@@ -151,12 +140,71 @@ public class NoLoginViewController {
 
     @FXML
     private void openContactSellerView(ActionEvent event) {
-        if (selectedIndex != -1) {
+        if (noLoginSelectedIndex != -1) {
             Alert sellerInformationAlert = new Alert(AlertType.INFORMATION);
             sellerInformationAlert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
             sellerInformationAlert.setTitle("Contact Seller");
             sellerInformationAlert.setHeaderText("Seller Information");
-            sellerInformationAlert.setContentText(FirebaseCollectionUtils.getSellerInformationFromEmail(observableList.get(selectedIndex).getEmail()));
+            sellerInformationAlert.setContentText(FirebaseCollectionUtils.getSellerInformationFromEmail(fullObservableList.get(noLoginSelectedIndex).getEmail()));
+            sellerInformationAlert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void refreshFirebase(ActionEvent event) {
+        fullObservableList.clear();
+        tableView.getItems().clear();
+        ApiFuture<QuerySnapshot> future = App.fstore.collection("Users").get();
+        List<QueryDocumentSnapshot> documents;
+        try {
+            documents = future.get().getDocuments();
+            if (!documents.isEmpty()) {
+                users = new LinkedList<>();
+                for (QueryDocumentSnapshot document : documents) {
+                    String firstName = (String) document.getData().get("First_Name");
+                    String lastName = (String) document.getData().get("Last_Name");
+                    String email = (String) document.getData().get("Email");
+                    String phoneNumber = (String) document.getData().get("Phone_Number");
+                    String address = (String) document.getData().get("Address");
+                    String password = (String) document.getData().get("Password");
+                    User newUser = new User(firstName, lastName, email, phoneNumber, address, password);
+                    users.add(newUser);
+                    System.out.println("User= " + newUser);
+                }
+            } else {
+                System.out.println("No user data");
+            }
+        } catch (InterruptedException | ExecutionException ex) {
+            ex.printStackTrace();
+        }
+        future = App.fstore.collection("Vehicles").get();
+        try {
+            documents = future.get().getDocuments();
+            if (!documents.isEmpty()) {
+                vehicles = new LinkedList<>();
+                for (QueryDocumentSnapshot document : documents) {
+                    String email = (String) document.getData().get("Email");
+                    String make = (String) document.getData().get("Make");
+                    String model = (String) document.getData().get("Model");
+                    int year = Integer.parseInt((String) document.getData().get("Year"));
+                    String color = (String) document.getData().get("Color");
+                    String fuelType = (String) document.getData().get("FuelType");
+                    int miles = Integer.parseInt((String) document.getData().get("Miles"));
+                    int accidents = Integer.parseInt((String) document.getData().get("Accidents"));
+                    double price = Double.parseDouble((String) document.getData().get("Price"));
+                    String additionalInformation = (String) document.getData().get("Additional_Information");
+                    Vehicle newVehicle = new Vehicle(email, make, model, year, color, fuelType, miles, accidents, price, additionalInformation);
+                    vehicles.add(newVehicle);
+                    System.out.println("Vehicle= " + newVehicle);
+                }
+            } else {
+                System.out.println("No vehicle data");
+            }
+        } catch (InterruptedException | ExecutionException ex) {
+            ex.printStackTrace();
+        }
+        for (int i = 0; i < App.vehicles.size(); i++) {
+            fullObservableList.add(App.vehicles.get(i));
         }
     }
 

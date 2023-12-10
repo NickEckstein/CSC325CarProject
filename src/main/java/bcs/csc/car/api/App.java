@@ -17,7 +17,11 @@ import bcs.csc.car.api.sql.utils.DataParser;
 import bcs.csc.car.api.sql.utils.SQLiteUtils;
 import bcs.csc.car.api.firebase.FirestoreContext;
 import bcs.csc.car.api.firebase.model.User;
+import bcs.csc.car.api.firebase.model.Vehicle;
+import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.auth.FirebaseAuth;
 import java.io.File;
 import javafx.application.Application;
@@ -28,6 +32,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  *
@@ -66,10 +72,75 @@ public class App extends Application {
     public final static String[] colors = {"Black", "Blue", "Brown", "Gold", "Gray", "Green", "Orange", "Purple", "Red", "Silver", "Tan", "White", "Yellow"};
     public final static String[] fuelTypes = {"Gasoline", "Electric", "Hybrid"};
 
+    /**
+     * Data Loaded from Firebase
+     */
+    public static LinkedList<User> users = new LinkedList();
+    public static LinkedList<Vehicle> vehicles = new LinkedList();
+
     @Override
     public void start(Stage stage) throws IOException {
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
+
+        /**
+         * Read Firebase Data
+         *
+         *
+         *
+         * Users
+         */
+        ApiFuture<QuerySnapshot> future = App.fstore.collection("Users").get();
+        List<QueryDocumentSnapshot> documents;
+        try {
+            documents = future.get().getDocuments();
+            if (!documents.isEmpty()) {
+                for (QueryDocumentSnapshot document : documents) {
+                    String firstName = (String) document.getData().get("First_Name");
+                    String lastName = (String) document.getData().get("Last_Name");
+                    String email = (String) document.getData().get("Email");
+                    String phoneNumber = (String) document.getData().get("Phone_Number");
+                    String address = (String) document.getData().get("Address");
+                    String password = (String) document.getData().get("Password");
+                    User newUser = new User(firstName, lastName, email, phoneNumber, address, password);
+                    users.add(newUser);
+                    System.out.println("User= " + newUser);
+                }
+            } else {
+                System.out.println("No user data");
+            }
+        } catch (InterruptedException | ExecutionException ex) {
+            ex.printStackTrace();
+        }
+
+        /**
+         * Vehicles
+         */
+        future = App.fstore.collection("Vehicles").get();
+        try {
+            documents = future.get().getDocuments();
+            if (!documents.isEmpty()) {
+                for (QueryDocumentSnapshot document : documents) {
+                    String email = (String) document.getData().get("Email");
+                    String make = (String) document.getData().get("Make");
+                    String model = (String) document.getData().get("Model");
+                    int year = Integer.parseInt((String) document.getData().get("Year"));
+                    String color = (String) document.getData().get("Color");
+                    String fuelType = (String) document.getData().get("FuelType");
+                    int miles = Integer.parseInt((String) document.getData().get("Miles"));
+                    int accidents = Integer.parseInt((String) document.getData().get("Accidents"));
+                    double price = Double.parseDouble((String) document.getData().get("Price"));
+                    String additionalInformation = (String) document.getData().get("Additional_Information");
+                    Vehicle newVehicle = new Vehicle(email, make, model, year, color, fuelType, miles, accidents, price, additionalInformation);
+                    vehicles.add(newVehicle);
+                    System.out.println("Vehicle= " + newVehicle);
+                }
+            } else {
+                System.out.println("No vehicle data");
+            }
+        } catch (InterruptedException | ExecutionException ex) {
+            ex.printStackTrace();
+        }
 
         scene = new Scene(loadFXML(VIEW_PATH + LOAD_FXML_FILE_NAME), 1080, 796);
         stage.setTitle("Car Project");

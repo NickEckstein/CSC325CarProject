@@ -2,13 +2,11 @@ package bcs.csc.car.api.controller;
 
 import bcs.csc.car.api.App;
 import bcs.csc.car.api.firebase.utils.FirebaseCollectionUtils;
-import bcs.csc.car.api.model.Vehicle;
+import bcs.csc.car.api.firebase.model.Vehicle;
 import java.io.IOException;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -24,7 +22,7 @@ public class AddRecordViewController {
     @FXML
     private TextField colorsTextField;
     @FXML
-    private ComboBox<String> fuelTypesComboBox;
+    private TextField fuelTypesTextField;
     @FXML
     private TextField milesTextField;
     @FXML
@@ -46,10 +44,6 @@ public class AddRecordViewController {
     @FXML
     private TextField makeTextField;
 
-    public void initialize() {
-        fuelTypesComboBox.setItems(FXCollections.observableArrayList(App.fuelTypes));
-    }
-
     @FXML
     private void openImageFileChooser(ActionEvent event) {
     }
@@ -66,13 +60,15 @@ public class AddRecordViewController {
                     modelTextField.getText(),
                     Integer.parseInt(yearTextField.getText()),
                     colorsTextField.getText(),
-                    fuelTypesComboBox.getValue(),
+                    fuelTypesTextField.getText(),
                     Integer.parseInt(milesTextField.getText()),
                     Integer.parseInt(accidentsTextField.getText()),
                     Double.parseDouble(priceTextField.getText()),
                     additionalInformationTextArea.getText()
             );
             FirebaseCollectionUtils.addVehicleToCollection(vehicle);
+            App.vehicles.add(vehicle);
+            System.out.println("Document added to collection= " + vehicle.toString());
             App.setRoot(App.VIEW_PATH + "sellerView");
         } catch (NumberFormatException | IOException e) {
 

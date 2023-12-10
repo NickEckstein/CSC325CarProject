@@ -34,7 +34,8 @@
               </rowConstraints>
                <children>
                   <Label styleClass="header" stylesheets="@stylesheet.css" text="Welcome!" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Label styleClass="text" stylesheets="@stylesheet.css" text="Operations" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#refreshFirebase" styleClass="smallbuttons" stylesheets="@stylesheet.css" text="Refresh" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Label styleClass="text" stylesheets="@stylesheet.css" text="Operations" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Label>
