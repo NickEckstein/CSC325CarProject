@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
- *
+ * Project Authors
  * @authors Meraj Ali, Nicholas Eckstein, Brian Niski, Bryant Velasquez
  */
 public class App extends Application {
@@ -85,9 +85,6 @@ public class App extends Application {
 
         /**
          * Read Firebase Data
-         *
-         *
-         *
          * Users
          */
         ApiFuture<QuerySnapshot> future = App.fstore.collection("Users").get();
@@ -114,6 +111,7 @@ public class App extends Application {
         }
 
         /**
+         * Read Firebase Data
          * Vehicles
          */
         future = App.fstore.collection("Vehicles").get();
@@ -142,6 +140,9 @@ public class App extends Application {
             ex.printStackTrace();
         }
 
+        /**
+         * Setup JavaFX Stage
+         */
         scene = new Scene(loadFXML(VIEW_PATH + LOAD_FXML_FILE_NAME), 1080, 796);
         stage.setTitle("Car Project");
         stage.setScene(scene);
@@ -159,6 +160,9 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        /**
+         * Load ALL files from SQL database
+         */
         File f = new File("Legal Make_Model List.dat");
         if (!f.exists()) {
             System.out.println("Initializing project files...");
@@ -204,6 +208,9 @@ public class App extends Application {
             App.legalMake_ModelList = legalMake_ModelList;
             System.out.println("CREATED PROJECT FILES SUCCESSFULLY");
         } else {
+            /**
+             * Load matching makes and model groups file
+             */
             LinkedList<LegalMake_Model> legalMake_ModelList = DataParser.readFile("Legal Make_Model List.dat");
             App.legalMake_ModelList = legalMake_ModelList;
             System.out.println("LOADED LEGAL MAKE_MODEL FILE SUCCESSFULLY");

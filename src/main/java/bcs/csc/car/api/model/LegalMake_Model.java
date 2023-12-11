@@ -3,7 +3,7 @@ package bcs.csc.car.api.model;
 import java.io.Serializable;
 
 /**
- * 
+ * Model Class for generating matching makes and models
  * @author Brian Niski
  */
 public class LegalMake_Model implements Serializable {

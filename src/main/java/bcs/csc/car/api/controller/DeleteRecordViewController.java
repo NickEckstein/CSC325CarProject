@@ -16,7 +16,7 @@ import javafx.scene.control.TextArea;
 
 /**
  *
- * @author Brian
+ * @author Brian Niski
  */
 public class DeleteRecordViewController {
 
@@ -63,6 +63,10 @@ public class DeleteRecordViewController {
         }
     }
 
+    /**
+     * Delete selected vehicle from Firebase collection and refresh the table
+     * @param event 
+     */
     @FXML
     private void deleteRecord(ActionEvent event) {
         try {
@@ -92,6 +96,10 @@ public class DeleteRecordViewController {
         }
     }
 
+    /**
+     * Change scene to seller view
+     * @param event 
+     */
     @FXML
     private void goBackToSellerView(ActionEvent event) {
         try {

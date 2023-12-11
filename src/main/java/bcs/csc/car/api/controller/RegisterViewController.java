@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 
 /**
  *
- * @author Brian
+ * @author Brian Niski
  */
 public class RegisterViewController {
 
@@ -34,6 +34,10 @@ public class RegisterViewController {
     @FXML
     private Button createAccountButton;
 
+    /**
+     * Function to create a new account upon filling out the form
+     * @param event 
+     */
     @FXML
     private void createAccount(ActionEvent event) {
         if (!(firstNameTextField.getText().isEmpty() && lastNameTextField.getText().isEmpty() && emailTextField.getText().isEmpty() && phoneNumberTextField.getText().isEmpty() && addressTextField.getText().isEmpty() && passwordField.getText().isEmpty()
@@ -57,6 +61,10 @@ public class RegisterViewController {
         }
     }
 
+    /**
+     * Return to the login view
+     * @param event 
+     */
     @FXML
     private void goBackToLoginView(ActionEvent event) {
         try {

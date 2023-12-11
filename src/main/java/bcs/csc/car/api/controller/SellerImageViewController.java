@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
- *
- * @author Brian
+ * 
+ * @author Brian Niski
  */
 public class SellerImageViewController {
 
@@ -35,6 +35,10 @@ public class SellerImageViewController {
         }
     }
 
+    /**
+     * Decrement index for image element
+     * @param event 
+     */
     @FXML
     private void previousButtonOnAction(ActionEvent event) {
         if (imageIndex > 0) {
@@ -47,12 +51,20 @@ public class SellerImageViewController {
         }
     }
 
+    /**
+     * Return to the seller view
+     * @param event 
+     */
     @FXML
     private void closeButtonOnAction(ActionEvent event) {
         Stage imageStage = SellerViewController.sellerImageStage;
         imageStage.close();
     }
 
+    /**
+     * Increment index for image element
+     * @param event 
+     */
     @FXML
     private void nextButtonOnAction(ActionEvent event) {
         try {

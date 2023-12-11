@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 
 /**
  *
- * @author Brian
+ * @author Brian Niski
  */
 public class AddRecordViewController {
 
@@ -44,14 +44,26 @@ public class AddRecordViewController {
     @FXML
     private TextField makeTextField;
 
+    /**
+     * Stub
+     * @param event 
+     */
     @FXML
     private void openImageFileChooser(ActionEvent event) {
     }
 
+    /**
+     * Stub
+     * @param event 
+     */
     @FXML
     private void openRemoveImageView(ActionEvent event) {
     }
 
+    /**
+     * Add a new vehicle record to the Firebase collection
+     * @param event 
+     */
     @FXML
     private void addRecord(ActionEvent event) {
         try {
@@ -75,6 +87,10 @@ public class AddRecordViewController {
         }
     }
 
+    /**
+     * Change scene to seller view
+     * @param event 
+     */
     @FXML
     private void goBackToSellerView(ActionEvent event) {
         try {

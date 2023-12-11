@@ -19,8 +19,9 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 /**
- *
- * @author Brian
+ * Firebase Utilities
+ * Separate Firebase functions into single class
+ * @author Brian Niski
  */
 public class FirebaseCollectionUtils {
 

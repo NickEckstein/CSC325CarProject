@@ -7,8 +7,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
 
 /**
- *
- * @author Brian
+ * Firebase Collection Model Class
+ * @author Brian Niski
  */
 public class Vehicle {
 

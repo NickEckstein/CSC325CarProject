@@ -35,7 +35,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Brian
+ * @author Brian Niski
  */
 public class NoLoginViewController {
 
@@ -93,6 +93,11 @@ public class NoLoginViewController {
         tableView.setItems(fullObservableList);
     }
 
+    /**
+     * If logged out, open login view
+     * If logged in, open seller view
+     * @param event 
+     */
     @FXML
     private void openLoginView(ActionEvent event) {
         try {
@@ -106,6 +111,10 @@ public class NoLoginViewController {
         }
     }
 
+    /**
+     * Update selected index when selecting a vehicle row from the table
+     * @param event 
+     */
     @FXML
     private void getSelectedRecordOnMousePress(MouseEvent event) {
         noLoginSelectedIndex = -1;
@@ -120,6 +129,10 @@ public class NoLoginViewController {
         }
     }
 
+    /**
+     * Open image view of the selected vehicle row
+     * @param event 
+     */
     @FXML
     private void openImagesView(ActionEvent event) {
         if (noLoginSelectedIndex != -1) {
@@ -138,6 +151,10 @@ public class NoLoginViewController {
         }
     }
 
+    /**
+     * Show contact information upon selecting a vehicle row in the table
+     * @param event 
+     */
     @FXML
     private void openContactSellerView(ActionEvent event) {
         if (noLoginSelectedIndex != -1) {
@@ -150,6 +167,10 @@ public class NoLoginViewController {
         }
     }
 
+    /**
+     * Refreshes every table row and reloads Firebase collection data
+     * @param event 
+     */
     @FXML
     private void refreshFirebase(ActionEvent event) {
         fullObservableList.clear();

@@ -13,8 +13,6 @@ import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,7 +21,7 @@ import javafx.scene.control.TextField;
 
 /**
  *
- * @author Brian
+ * @author Brian Niski
  */
 public class EditRecordViewController {
 
@@ -67,14 +65,28 @@ public class EditRecordViewController {
         additionalInformationTextArea.setText(sellerObservableList.get(selectedIndex).getAdditionalInformation());
     }
 
+    /**
+     * Stub
+     * @param event 
+     */
     @FXML
     private void openImageFileChooser(ActionEvent event) {
     }
 
+    /**
+     * Stub
+     * @param event 
+     */
     @FXML
     private void openRemoveImageView(ActionEvent event) {
     }
 
+    /**
+     * Edit selected vehicle in Firebase collection and update table
+     * Implementation is to delete the old version and add the new version
+     * @param event
+     * @return 
+     */
     @FXML
     private Vehicle editRecord(ActionEvent event) {
         Vehicle originalVehicle = sellerObservableList.get(selectedIndex);
@@ -116,6 +128,10 @@ public class EditRecordViewController {
         return originalVehicle;
     }
 
+    /**
+     * Change scene to seller view
+     * @param event 
+     */
     @FXML
     private void goBackToSellerView(ActionEvent event) {
         try {

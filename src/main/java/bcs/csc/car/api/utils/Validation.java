@@ -1,8 +1,9 @@
 package bcs.csc.car.api.utils;
 
 /**
- *
- * @author Brian
+ * Utility Class
+ * Validates user input for matches using regular expressions
+ * @author Brian Niski
  */
 public class Validation {
 

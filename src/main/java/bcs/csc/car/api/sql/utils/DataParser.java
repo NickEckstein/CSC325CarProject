@@ -13,7 +13,8 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 /**
- * 
+ * SQL Utility Class
+ * Data parsing from SQL database
  * @author Brian Niski
  */
 public class DataParser {

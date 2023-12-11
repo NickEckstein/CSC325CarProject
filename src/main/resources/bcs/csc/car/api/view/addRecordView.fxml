@@ -15,25 +15,25 @@
       <TextField alignment="CENTER" styleClass="header" stylesheets="@stylesheet.css" text="Add Vehicle" />
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@stylesheet.css">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="469.33335367838544" minWidth="345.99997965494794" prefWidth="406.6666666666667" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="504.00002034505206" minWidth="380.66664632161456" prefWidth="443.3333333333333" />
+          <ColumnConstraints hgrow="SOMETIMES" />
+          <ColumnConstraints hgrow="SOMETIMES" />
             <ColumnConstraints hgrow="SOMETIMES" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints />
           <RowConstraints />
           <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
-            <RowConstraints maxHeight="48.66666253407797" minHeight="47.33333428700766" prefHeight="47.33333428700766" vgrow="SOMETIMES" />
             <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="46.33333333333334" minHeight="42.99998982747397" prefHeight="46.33333333333334" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="51.66667683919272" minHeight="43.33333333333334" prefHeight="51.66667683919272" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="49.333343505859375" minHeight="31.666676839192718" prefHeight="49.333343505859375" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="54.000020345052064" minHeight="21.66668701171875" prefHeight="51.33332316080728" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="59.33331298828125" minHeight="32.99998982747394" prefHeight="39.000020345052064" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="64.33333333333331" minHeight="35.66668701171875" prefHeight="60.33331298828125" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="243.99999999999994" minHeight="193.99999999999994" prefHeight="212.3333129882812" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="103.0" minHeight="41.66664632161462" prefHeight="61.33333333333337" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="92.00002034505212" minHeight="45.00002034505212" prefHeight="59.0" vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label styleClass="text" text="Make" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">

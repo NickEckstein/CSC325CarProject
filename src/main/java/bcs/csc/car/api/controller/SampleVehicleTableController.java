@@ -31,7 +31,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- *
+ * FXML Controller Test Class
  * @author Brian Niski
  */
 public class SampleVehicleTableController {
@@ -129,6 +129,10 @@ public class SampleVehicleTableController {
         statusLabel.setText("");
     }
 
+    /**
+     * Load image view in new stage
+     * @param event 
+     */
     @FXML
     private void showImagesView(ActionEvent event) {
         if (!(statusLabel.getText().equals(""))) {
@@ -162,6 +166,10 @@ public class SampleVehicleTableController {
         return vehicleList;
     }
 
+    /**
+     * Generate a random vehicle and add it to the list
+     * @param event 
+     */
     @FXML
     private void showAddVehicleView(ActionEvent event) {
         // Random vehicle info for now
@@ -171,10 +179,20 @@ public class SampleVehicleTableController {
         vehicleTableView.getSelectionModel().clearSelection();
     }
 
+    /**
+     * Obtain a random index from a linked list
+     * @param <T>
+     * @param linkedList
+     * @return 
+     */
     private <T> int randomIndexFromList(LinkedList<T> linkedList) {
         return (int) (Math.random() * linkedList.size());
     }
 
+    /**
+     * Track selected vehicle from mouse click
+     * @param event 
+     */
     @FXML
     private void onMousePressed(MouseEvent event) {
         try {
@@ -185,6 +203,10 @@ public class SampleVehicleTableController {
         }
     }
 
+    /**
+     * Delete selected vehicle from table
+     * @param event 
+     */
     @FXML
     private void removeSelectedVehicle(ActionEvent event) {
         try {

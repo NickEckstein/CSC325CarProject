@@ -3,7 +3,7 @@ package bcs.csc.car.api.sql.model.make_model;
 import java.io.Serializable;
 
 /**
- * 
+ * SQL Model Class
  * @author Brian Niski
  */
 public class Make_Model implements Serializable {

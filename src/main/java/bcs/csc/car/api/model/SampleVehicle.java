@@ -9,7 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
 
 /**
- * 
+ * Test Model Class
  * @author Brian Niski
  */
 public class SampleVehicle implements Serializable {

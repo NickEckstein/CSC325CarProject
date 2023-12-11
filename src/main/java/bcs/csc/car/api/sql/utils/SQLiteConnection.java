@@ -5,7 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * 
+ * SQL Utility Class
+ * Create connection to SQL
  * @author Brian Niski
  */
 public class SQLiteConnection {

@@ -1,8 +1,8 @@
 package bcs.csc.car.api.firebase.model;
 
 /**
- *
- * @author Brian
+ * Firebase Collection Model Class
+ * @author Brian Niski
  */
 public class User {
 

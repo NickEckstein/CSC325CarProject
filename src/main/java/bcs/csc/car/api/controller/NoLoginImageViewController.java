@@ -35,6 +35,10 @@ public class NoLoginImageViewController {
         }
     }
 
+    /**
+     * Decrement index for image element
+     * @param event 
+     */
     @FXML
     private void previousButtonOnAction(ActionEvent event) {
         if (imageIndex > 0) {
@@ -47,12 +51,20 @@ public class NoLoginImageViewController {
         }
     }
 
+    /**
+     * Return to vehicle browser view
+     * @param event 
+     */
     @FXML
     private void closeButtonOnAction(ActionEvent event) {
         Stage imageStage = NoLoginViewController.noLoginImageStage;
         imageStage.close();
     }
 
+    /**
+     * Increment index for image element
+     * @param event 
+     */
     @FXML
     private void nextButtonOnAction(ActionEvent event) {
         try {

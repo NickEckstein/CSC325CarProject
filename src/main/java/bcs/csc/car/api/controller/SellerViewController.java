@@ -25,9 +25,8 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
  *
- * @author Brian
+ * @author Brian Niski
  */
 public class SellerViewController {
 
@@ -95,6 +94,10 @@ public class SellerViewController {
         userNameLabel.setText(App.user.getFirstName() + " " + App.user.getLastName());
     }
 
+    /**
+     * Open vehicle browser view while still be logged in
+     * @param event 
+     */
     @FXML
     private void openVehicleBrowserView(ActionEvent event) {
         try {
@@ -104,6 +107,10 @@ public class SellerViewController {
         }
     }
 
+    /**
+     * Open add new vehicle form
+     * @param event 
+     */
     @FXML
     private void openAddRecordView(ActionEvent event) {
         try {
@@ -113,6 +120,10 @@ public class SellerViewController {
         }
     }
 
+    /**
+     * Open edit vehicle form from selection in table
+     * @param event 
+     */
     @FXML
     private void openEditRecordView(ActionEvent event) {
         if (isSelected) {
@@ -124,6 +135,10 @@ public class SellerViewController {
         }
     }
 
+    /**
+     * Open delete vehicle confirmation page from selection in table
+     * @param event 
+     */
     @FXML
     private void openDeleteRecordView(ActionEvent event) {
         if (isSelected) {
@@ -135,6 +150,10 @@ public class SellerViewController {
         }
     }
 
+    /**
+     * Exports seller's current table view as a CSV file format
+     * @param event 
+     */
     @FXML
     private void exportTable(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -157,6 +176,10 @@ public class SellerViewController {
         }
     }
 
+    /**
+     * Return to login view and log out
+     * @param event 
+     */
     @FXML
     private void openLoginView(ActionEvent event) {
         App.user = null;
@@ -167,6 +190,10 @@ public class SellerViewController {
         }
     }
 
+    /**
+     * Track which vehicle row is selected from mouse click in table
+     * @param event 
+     */
     @FXML
     private void getSelectedRecordOnMousePress(MouseEvent event) {
         sellerSelectedIndex = -1;
@@ -183,6 +210,10 @@ public class SellerViewController {
         }
     }
 
+    /**
+     * Open image view of selected vehicle from the table
+     * @param event 
+     */
     @FXML
     private void openImagesView(ActionEvent event) {
         if (isSelected) {

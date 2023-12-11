@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 
 /**
  *
- * @author Brian
+ * @author Brian Niski
  */
 public class LoginViewController {
 
@@ -26,6 +26,10 @@ public class LoginViewController {
     @FXML
     private Button browseWithoutSigningInButton;
 
+    /**
+     * Change scene to seller view if login credentials are correct
+     * @param event 
+     */
     @FXML
     private void openSellerVehicleTableView(ActionEvent event) {
         if (!(usernameTextField.getText().isEmpty() && passwordTextField.getText().isEmpty())) {
@@ -41,6 +45,10 @@ public class LoginViewController {
         }
     }
 
+    /**
+     * Change scene to register/create account view
+     * @param event 
+     */
     @FXML
     private void openCreateAccountView(ActionEvent event) {
         try {
@@ -50,6 +58,10 @@ public class LoginViewController {
         }
     }
 
+    /**
+     * Change scene to browse all vehicles in the collection and table
+     * @param event 
+     */
     @FXML
     private void openNoLoginView(ActionEvent event) {
         try {
