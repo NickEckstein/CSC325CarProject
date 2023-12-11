@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Region;
 
 /**
- * 
+ * FXML Controller Test Class
  * @author Brian Niski
  */
 public class SampleController {
@@ -17,6 +17,10 @@ public class SampleController {
     @FXML
     private Button generateRandomVehicleButton;
 
+    /**
+     * Alert popup to generate a random vehicle with the matching make and model
+     * @param event 
+     */
     @FXML
     private void generateRandomLegalVehicle(ActionEvent event) {
         try {

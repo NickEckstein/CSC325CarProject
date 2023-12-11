@@ -5,6 +5,9 @@ import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Test Firebase Class
+ */
 public class SampleAccessDataView {
 
     private final StringProperty userName = new SimpleStringProperty();

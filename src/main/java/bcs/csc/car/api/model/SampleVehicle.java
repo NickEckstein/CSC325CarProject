@@ -9,10 +9,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
 
 /**
- * 
+ * Test Model Class
  * @author Brian Niski
  */
-public class Vehicle implements Serializable {
+public class SampleVehicle implements Serializable {
 
     private final SimpleLongProperty vehicleID;
     private SimpleStringProperty batteryType;
@@ -32,7 +32,7 @@ public class Vehicle implements Serializable {
     private LinkedList<Image> imageList;
     private SimpleDoubleProperty price;
 
-    public Vehicle(String batteryType, String bodyStyle, String driveType, String engineModel, String fuelType, String make, String model, String transmission, String vehicleType, long year, long miles, String color, String conditionDescription, long numberOfAccidents, double price) {
+    public SampleVehicle(String batteryType, String bodyStyle, String driveType, String engineModel, String fuelType, String make, String model, String transmission, String vehicleType, long year, long miles, String color, String conditionDescription, long numberOfAccidents, double price) {
         this.vehicleID = new SimpleLongProperty(VehicleIDCounter.addNewVehicleID());
         this.batteryType = new SimpleStringProperty(batteryType);
         this.bodyStyle = new SimpleStringProperty(bodyStyle);

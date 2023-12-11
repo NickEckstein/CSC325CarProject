@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bcs.csc.car.api.controller.DeleteRecordViewController">
    <children>
       <TextField alignment="CENTER" styleClass="header" stylesheets="@stylesheet.css" text="Delete Vehicle" />
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@stylesheet.css">
@@ -54,11 +53,12 @@
             <TextArea fx:id="additionalInformationTextArea" editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="textarea" stylesheets="@stylesheet.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
             <Label styleClass="text" stylesheets="@stylesheet.css" text="Images" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
             <Label fx:id="numberOfImagesLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
-            <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#addRecord" styleClass="buttons" stylesheets="@stylesheet.css" text="Confirm Deletion" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+            <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#deleteRecord" styleClass="buttons" stylesheets="@stylesheet.css" text="Confirm Deletion" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <Button mnemonicParsing="false" onAction="#goBackToSellerView" styleClass="buttons" text="Back" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </children>

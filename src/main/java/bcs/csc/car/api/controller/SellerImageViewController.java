@@ -1,6 +1,6 @@
 package bcs.csc.car.api.controller;
 
-import bcs.csc.car.api.model.Vehicle;
+import bcs.csc.car.api.firebase.model.Vehicle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,7 +11,7 @@ import javafx.stage.Stage;
  * 
  * @author Brian Niski
  */
-public class ImageViewController {
+public class SellerImageViewController {
 
     @FXML
     private ImageView imageView;
@@ -22,44 +22,56 @@ public class ImageViewController {
     @FXML
     private Button nextButton;
 
-    private Vehicle selectedVehicle;
+    private Vehicle sellerSelectedVehicle;
     private int imageIndex;
 
     public void initialize() {
         try {
-            selectedVehicle = VehicleTableController.getVehicleList().get(VehicleTableController.getSelectedVehicleID());
+            sellerSelectedVehicle = SellerViewController.sellerObservableList.get(SellerViewController.sellerSelectedIndex);
             imageIndex = 0;
-            imageView.setImage(selectedVehicle.getImageList().get(imageIndex));
+            imageView.setImage(sellerSelectedVehicle.getImageList().get(imageIndex));
         } catch (Exception e) {
             System.out.println("No vehicle selected or end of image list...");
         }
     }
 
+    /**
+     * Decrement index for image element
+     * @param event 
+     */
     @FXML
     private void previousButtonOnAction(ActionEvent event) {
         if (imageIndex > 0) {
             imageIndex--;
         }
         try {
-            imageView.setImage(selectedVehicle.getImageList().get(imageIndex));
+            imageView.setImage(sellerSelectedVehicle.getImageList().get(imageIndex));
         } catch (Exception e) {
             System.out.println("No vehicle selected or end of image list...");
         }
     }
 
+    /**
+     * Return to the seller view
+     * @param event 
+     */
     @FXML
     private void closeButtonOnAction(ActionEvent event) {
-        Stage imageStage = VehicleTableController.getImageStage();
+        Stage imageStage = SellerViewController.sellerImageStage;
         imageStage.close();
     }
 
+    /**
+     * Increment index for image element
+     * @param event 
+     */
     @FXML
     private void nextButtonOnAction(ActionEvent event) {
         try {
-            if (imageIndex < selectedVehicle.getImageList().size() - 1) {
+            if (imageIndex < sellerSelectedVehicle.getImageList().size() - 1) {
                 imageIndex++;
             }
-            imageView.setImage(selectedVehicle.getImageList().get(imageIndex));
+            imageView.setImage(sellerSelectedVehicle.getImageList().get(imageIndex));
         } catch (Exception e) {
             System.out.println("No vehicle selected or end of image list...");
         }

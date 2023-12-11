@@ -10,6 +10,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/**
+ * Firebase Initialization Class
+ * @author Brian Niski
+ */
 public class FirestoreContext {
 
     public Firestore firebase() {

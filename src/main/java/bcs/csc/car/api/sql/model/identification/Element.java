@@ -3,7 +3,7 @@ package bcs.csc.car.api.sql.model.identification;
 import java.io.Serializable;
 
 /**
- * 
+ * SQL Model Class
  * @author Brian Niski
  */
 public class Element implements Serializable {

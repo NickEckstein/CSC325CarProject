@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.25" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.25" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bcs.csc.car.api.controller.SellerViewController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0">
+    <AnchorPane>
          <children>
             <GridPane styleClass="background" stylesheets="@stylesheet.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columnConstraints>
@@ -25,7 +25,7 @@
               <rowConstraints>
                   <RowConstraints vgrow="SOMETIMES" />
                   <RowConstraints vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints vgrow="SOMETIMES" />
                 <RowConstraints vgrow="SOMETIMES" />
                   <RowConstraints vgrow="SOMETIMES" />
                 <RowConstraints vgrow="SOMETIMES" />
@@ -118,18 +118,12 @@
                                           <RowConstraints vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Label styleClass="text" stylesheets="@stylesheet.css" text="Images" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                          <Label styleClass="text" stylesheets="@stylesheet.css" text="Images" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                              <font>
                                                 <Font name="System Bold Italic" size="12.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="viewImagesButton" mnemonicParsing="false" onAction="#openImagesView" styleClass="buttons" stylesheets="@stylesheet.css" text="View Images" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                          <Label styleClass="text" stylesheets="@stylesheet.css" text="Messages" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                             <font>
-                                                <Font name="System Bold Italic" size="12.0" />
-                                             </font>
-                                          </Label>
-                                          <Button fx:id="viewMessagesButton" mnemonicParsing="false" onAction="#openMessagesView" styleClass="buttons" stylesheets="@stylesheet.css" text="View Messages" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                          <Button fx:id="viewImagesButton" mnemonicParsing="false" onAction="#openImagesView" styleClass="buttons" stylesheets="@stylesheet.css" text="View Images" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                                        </children>
                                     </GridPane>
                                  </children>

@@ -20,7 +20,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * 
+ * SQL Utility Class
+ * Data loading from SQL database
  * @author Brian Niski
  */
 public class SQLiteUtils {

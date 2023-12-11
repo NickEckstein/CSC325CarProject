@@ -16,8 +16,12 @@ import bcs.csc.car.api.sql.model.vehicle.VehicleType;
 import bcs.csc.car.api.sql.utils.DataParser;
 import bcs.csc.car.api.sql.utils.SQLiteUtils;
 import bcs.csc.car.api.firebase.FirestoreContext;
-import bcs.csc.car.api.firebase.model.SampleUser;
+import bcs.csc.car.api.firebase.model.User;
+import bcs.csc.car.api.firebase.model.Vehicle;
+import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.auth.FirebaseAuth;
 import java.io.File;
 import javafx.application.Application;
@@ -28,9 +32,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
- *
+ * Project Authors
  * @authors Meraj Ali, Nicholas Eckstein, Brian Niski, Bryant Velasquez
  */
 public class App extends Application {
@@ -40,7 +46,7 @@ public class App extends Application {
      */
     public static final String VIEW_PATH = "view/";
     public static final String RESOURCES_PATH = "./src/main/resources/";
-    public static final String LOAD_FXML_FILE_NAME = "sampleFirebase";
+    public static final String LOAD_FXML_FILE_NAME = "loginView";
 
     /**
      * App Objects
@@ -55,26 +61,97 @@ public class App extends Application {
     public static FirebaseAuth fauth;
     private final FirestoreContext contxtFirebase = new FirestoreContext();
 
+    /**
+     * Selected User Upon Login
+     */
+    public static User user = null;
+
+    /**
+     * Final Data Types
+     */
+    public final static String[] colors = {"Black", "Blue", "Brown", "Gold", "Gray", "Green", "Orange", "Purple", "Red", "Silver", "Tan", "White", "Yellow"};
+    public final static String[] fuelTypes = {"Gasoline", "Electric", "Hybrid"};
+
+    /**
+     * Data Loaded from Firebase
+     */
+    public static LinkedList<User> users = new LinkedList();
+    public static LinkedList<Vehicle> vehicles = new LinkedList();
+
     @Override
     public void start(Stage stage) throws IOException {
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
 
-        scene = new Scene(loadFXML(VIEW_PATH + LOAD_FXML_FILE_NAME));
-        stage.setTitle("Firebase Test Suite");
+        /**
+         * Read Firebase Data
+         * Users
+         */
+        ApiFuture<QuerySnapshot> future = App.fstore.collection("Users").get();
+        List<QueryDocumentSnapshot> documents;
+        try {
+            documents = future.get().getDocuments();
+            if (!documents.isEmpty()) {
+                for (QueryDocumentSnapshot document : documents) {
+                    String firstName = (String) document.getData().get("First_Name");
+                    String lastName = (String) document.getData().get("Last_Name");
+                    String email = (String) document.getData().get("Email");
+                    String phoneNumber = (String) document.getData().get("Phone_Number");
+                    String address = (String) document.getData().get("Address");
+                    String password = (String) document.getData().get("Password");
+                    User newUser = new User(firstName, lastName, email, phoneNumber, address, password);
+                    users.add(newUser);
+                    System.out.println("User= " + newUser);
+                }
+            } else {
+                System.out.println("No user data");
+            }
+        } catch (InterruptedException | ExecutionException ex) {
+            ex.printStackTrace();
+        }
+
+        /**
+         * Read Firebase Data
+         * Vehicles
+         */
+        future = App.fstore.collection("Vehicles").get();
+        try {
+            documents = future.get().getDocuments();
+            if (!documents.isEmpty()) {
+                for (QueryDocumentSnapshot document : documents) {
+                    String email = (String) document.getData().get("Email");
+                    String make = (String) document.getData().get("Make");
+                    String model = (String) document.getData().get("Model");
+                    int year = Integer.parseInt((String) document.getData().get("Year"));
+                    String color = (String) document.getData().get("Color");
+                    String fuelType = (String) document.getData().get("FuelType");
+                    int miles = Integer.parseInt((String) document.getData().get("Miles"));
+                    int accidents = Integer.parseInt((String) document.getData().get("Accidents"));
+                    double price = Double.parseDouble((String) document.getData().get("Price"));
+                    String additionalInformation = (String) document.getData().get("Additional_Information");
+                    Vehicle newVehicle = new Vehicle(email, make, model, year, color, fuelType, miles, accidents, price, additionalInformation);
+                    vehicles.add(newVehicle);
+                    System.out.println("Vehicle= " + newVehicle);
+                }
+            } else {
+                System.out.println("No vehicle data");
+            }
+        } catch (InterruptedException | ExecutionException ex) {
+            ex.printStackTrace();
+        }
+
+        /**
+         * Setup JavaFX Stage
+         */
+        scene = new Scene(loadFXML(VIEW_PATH + LOAD_FXML_FILE_NAME), 1080, 796);
+        stage.setTitle("Car Project");
         stage.setScene(scene);
         stage.show();
-        
-//        System.out.println("Add new user to Firebase");
-//        SampleUser.addUser(new SampleUser("test@email.com", "averysecurepassword"));
-//        SampleUser.addUser(new SampleUser("test2@email.com", "averysecurepassword2"));
-        System.out.println("Success");
-        
-        SampleUser.readUsers();
     }
 
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+        System.out.println("Scene changed to " + fxml);
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
@@ -83,6 +160,9 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        /**
+         * Load ALL files from SQL database
+         */
         File f = new File("Legal Make_Model List.dat");
         if (!f.exists()) {
             System.out.println("Initializing project files...");
@@ -128,6 +208,9 @@ public class App extends Application {
             App.legalMake_ModelList = legalMake_ModelList;
             System.out.println("CREATED PROJECT FILES SUCCESSFULLY");
         } else {
+            /**
+             * Load matching makes and model groups file
+             */
             LinkedList<LegalMake_Model> legalMake_ModelList = DataParser.readFile("Legal Make_Model List.dat");
             App.legalMake_ModelList = legalMake_ModelList;
             System.out.println("LOADED LEGAL MAKE_MODEL FILE SUCCESSFULLY");

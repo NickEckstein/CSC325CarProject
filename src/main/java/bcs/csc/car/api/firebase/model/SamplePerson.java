@@ -1,5 +1,8 @@
 package bcs.csc.car.api.firebase.model;
 
+/**
+ * Test Model Class
+ */
 public class SamplePerson {
 
     private String name;
